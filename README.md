@@ -1,35 +1,24 @@
 # kobby-adjei.vercel.app
 
-Portfolio. Two case studies, one habit: getting a fuzzy judgement into a form
-someone else can apply, disagree with, or prove wrong.
+Two pieces of work at FlmLnk, a marketing tool for filmmakers.
 
-- **The Renovation** — a product UI run as one movement: one thesis, five
-  principles, twenty-one logged changes.
-- **The Tournament** — a blind evaluation of 23 AI models on clip selection;
-  297 candidates judged before model identities were revealed.
+### The Renovation
 
-## Running it
+The product looked like every other AI app released that year. I inspected it against a competitor, audited the
+screens against each other to find the faults that repeated, and rebuilt them against five stated principles.
+
+Twenty-one changes logged, seven shown as before and after, including the June build and the current build running
+side by side on the same account.
+
+### The Tournament
+
+A frontier model chose which moments became clips, and it was the most expensive call in the product. I wrote down
+what makes a clip good, then scored 297 candidates from 23 models without knowing which model produced which.
+
+A cheaper model scored higher, at roughly 78 percent lower cost per usable clip. Then the human review showed the
+measurement itself was faulty. A tenth of a second of audio was cutting words in half and deciding the results. No
+winner has been declared, because that result is still confounded.
+
+---
 
 Static site, no build step.
-
-```bash
-python3 -m http.server 4200 --bind 127.0.0.1
-```
-
-## Deploying
-
-```bash
-vercel deploy --prod --yes
-vercel alias set <deployment-url> kobby-adjei.vercel.app
-```
-
-## Structure
-
-```
-index.html         home
-renovation.html    case one
-tournament.html    case two
-assets/site.css    all styling; one accent per case (rose = craft, blue = measured)
-assets/ics.*       img-comparison-slider (MIT) for the before/after wipes
-assets/*.jpg       paired before/after frames, matched dimensions, top-anchored
-```
