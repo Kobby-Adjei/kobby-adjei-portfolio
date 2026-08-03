@@ -177,6 +177,13 @@ img{max-width:100%;height:auto}
 
   <p>The section that already worked was Clips and Reels, so it became the model for the rest, which is the same
   method the cross-screen audit used.</p>
+
+  <figure>
+    <img src="assets/public-still-live.jpg" alt="The link editor preview, still showing the match score, rating and two competing buttons" loading="lazy">
+    <figcaption><b>Still live today.</b> Captured from the running build while writing this. The match score, the
+    TV-MA rating, the leaked placeholder and both competing buttons are all still on the page. This teardown is a
+    diagnosis with a planned redesign, not work that has shipped, and the log says so.</figcaption>
+  </figure>
 </section>
 
 <hr class="rule">
@@ -375,24 +382,27 @@ img{max-width:100%;height:auto}
 
 <section>
   <h2>5 · Asset library</h2>
-  <p>The library holds everything the product generates, so it is the screen a filmmaker returns to most often.
-  It was also the screen the cross-screen audit found the worst repetition on.</p>
+  <p>The library holds everything the product generates, so it is the screen a filmmaker returns to most often,
+  and it is where the cross-screen audit found the worst repetition.</p>
 
-  <p><b>The problem.</b> Every card printed its raw generation prompt across the artwork. Because a whole row is
-  generated from one prompt, the identical sentence appeared on every card in that row, and the poster underneath
-  was unreadable. The audit evidence higher up this page shows it.</p>
-  <p><b>The change.</b> Captions came off the cards. Each asset now carries a real name taken from its content,
-  with the date and score beneath it, and the generation prompt moved into the detail view.</p>
-  <p><b>Why it matters.</b> A caption repeated five times across a row carries no information, and it was covering
-  the one thing on the screen that did. This is the Clips behaviour applied to the rest of the library.</p>
+  <figure>
+    <div class="cmp">
+      <img-comparison-slider keyboard="enabled" tabindex="0">
+        <img slot="first" src="assets/before-library.jpg" alt="The library in June, with the generation prompt printed across every poster">
+        <img slot="second" src="assets/after-library.jpg" alt="The library now, with a real name, date and score under clean artwork">
+      </img-comparison-slider>
+      <span class="tag b">Before</span><span class="tag a">After</span>
+    </div>
+    <figcaption>June on the left, the current build on the right, captured from the running app.</figcaption>
+  </figure>
 
-  <div class="callout">
-    <div class="t">Comparison pending a correct capture</div>
-    <p>An earlier version of this section carried an after frame that was not representative. It was captured
-    against a database still holding auto-generated content packs from June, which render a campaign badge that a
-    normal collection does not. The claim above is accurate and verified in the running build; the image is being
-    recaptured rather than shown wrong.</p>
-  </div>
+  <p><b>The problem.</b> Every card printed its raw generation prompt as a caption. A whole row is generated from
+  one prompt, so the identical sentence appeared on every card in that row, covering the artwork it was meant to
+  describe.</p>
+  <p><b>The change.</b> Each asset now carries a real name taken from its own content, with the date and a score
+  beneath it. The prompt moved into the detail view.</p>
+  <p><b>Why it matters.</b> A caption repeated five times across a row carries no information, and it was hiding
+  the one thing on screen that did. This is the behaviour Clips already had, applied to the rest of the library.</p>
 </section>
 
 <section>
@@ -417,6 +427,24 @@ img{max-width:100%;height:auto}
   <p><b>Why it matters.</b> A published film page carries more reputational weight than anything else in the
   product, because filmmakers send it to people they are trying to impress. Showing the artefact is more useful
   than describing it.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>7 · Settings, as a document</h2>
+  <p>Personal Info was thirty-four form controls, all open at once, most of them empty most of the time. Settings
+  is checked often and edited rarely, so it should read as a document and only become a form at the moment you
+  touch a field.</p>
+
+  <figure>
+    <img src="assets/settings-dossier.jpg" alt="Settings rebuilt as rows of label and value with an edit pencil on hover" loading="lazy">
+    <figcaption><b>Two registers sharing one row grammar.</b> Things you state, such as name and role, are rows with
+    a label, a value and a pencil on hover; clicking a line turns it into the input in place. Things about your
+    standing, such as plan and payouts, use the same row with a state dot and a single verb. Empty optional fields
+    fold under one line rather than sitting open. The principle was see less, lose nothing: every control still
+    exists, one click closer than it looked.</figcaption>
+  </figure>
 </section>
 
 <hr class="rule">
