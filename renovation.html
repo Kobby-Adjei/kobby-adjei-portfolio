@@ -36,7 +36,7 @@ img{max-width:100%;height:auto}
   rocket icon, a co-pilot tagline, and blue accents on a red brand. Individually these are small. Together they
   tell a filmmaker that the tool was assembled from defaults, which is a problem for a product asking them to
   stake a launch on it.</p>
-  <p>This page covers the frame used to fix that, then five changes that came out of it. Each one follows the
+  <p>This page covers the frame used to fix that, then six changes that came out of it. Each one follows the
   same shape as the log entry behind it: the screen, the problem, the change, and why it matters.</p>
 </header>
 
@@ -76,6 +76,33 @@ img{max-width:100%;height:auto}
 </section>
 
 <hr class="rule">
+
+<section>
+  <h2>How far back it goes</h2>
+  <p>The frames below are not archive screenshots. Both were captured on the same machine on the same afternoon,
+  by checking out the June build into a separate working copy, running it alongside the current branch, and
+  loading the same account at the same window size in both.</p>
+
+  <figure>
+    <div class="cmp">
+      <img-comparison-slider keyboard="enabled" tabindex="0">
+        <img slot="first" src="assets/before-origin.jpg" alt="The June build, opening into a stacked Generate Assets modal">
+        <img slot="second" src="assets/after-origin.jpg" alt="The current build, opening on the reel with no modal">
+      </img-comparison-slider>
+      <span class="tag b">Before</span><span class="tag a">After</span>
+    </div>
+    <figcaption>June build on the left, current build on the right. Same account, same 1440 by 900 window,
+    ten weeks apart.</figcaption>
+  </figure>
+
+  <p><b>The problem.</b> The June build opens by stacking two modals on top of the dashboard, so the first thing a
+  filmmaker sees is a dialog covering the product, with a second dialog behind it. The rocket sits on Upgrade my
+  plan, and no film is selected.</p>
+  <p><b>The change.</b> The current build opens on the reel itself. There is no modal, the film is already
+  selected, the rocket is gone, and the composer sits at the bottom ready for a first message.</p>
+  <p><b>Why it matters.</b> Opening a product with a dialog spends the user's first attention on dismissing
+  something. Every entry in this case study is a smaller version of that same decision.</p>
+</section>
 
 <section>
   <h2>1 · Dashboard home</h2>
@@ -216,7 +243,31 @@ img{max-width:100%;height:auto}
 </section>
 
 <section>
-  <h2>5 · Public Links</h2>
+  <h2>5 · Asset library</h2>
+  <p>The library holds everything the product generates, so it is the screen a filmmaker returns to most often.</p>
+
+  <figure>
+    <div class="cmp">
+      <img-comparison-slider keyboard="enabled" tabindex="0">
+        <img slot="first" src="assets/before-library.jpg" alt="The library in June, with generation prompts printed across every poster">
+        <img slot="second" src="assets/after-library.jpg" alt="The library now, with the poster art left to carry the card">
+      </img-comparison-slider>
+      <span class="tag b">Before</span><span class="tag a">After</span>
+    </div>
+    <figcaption>June on the left, current build on the right. The same content pack in both.</figcaption>
+  </figure>
+
+  <p><b>The problem.</b> Every card printed its raw generation prompt across the artwork. Because a whole row is
+  generated from one prompt, the same sentence appeared on every card in that row, and the poster underneath was
+  unreadable.</p>
+  <p><b>The change.</b> Captions came off the cards. The poster carries the card, with a short title underneath,
+  and the prompt moved into the detail view for anyone who needs it.</p>
+  <p><b>Why it matters.</b> A caption repeated five times across a row carries no information. It was covering the
+  one thing on the screen that did.</p>
+</section>
+
+<section>
+  <h2>6 · Public Links</h2>
   <p>Every screen above is used by the filmmaker. This one is seen by their audience.</p>
 
   <figure>
