@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Tournament — Kobby Adjei</title>
+<meta name="description" content="A blind evaluation of 23 AI models on clip selection: 297 candidates judged without model identities, a ~78% cost reduction, and a bug hiding in a tenth of a second of audio.">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◐</text></svg>">
+</head>
+<body>
+
+<nav class="mast"><div class="in">
+  <a class="me" href="./">Kobby Adjei</a>
+  <a href="renovation.html">The Renovation</a>
+  <a class="here" href="tournament.html">The Tournament</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Case two · AI evaluation · FlmLnk</div>
+  <h1>Which model picks the best clip?</h1>
+  <p class="lede" style="margin-top:26px">FlmLnk turns long videos into short clips worth posting. A frontier model
+  chose the moments, and it was the most expensive call in the product. The question was whether something cheaper
+  could do it without anyone noticing a drop in quality.</p>
+  <p>Answering that honestly meant not trusting my own eye. I scored every candidate without knowing which model
+  produced it, and only opened the mapping after the last score was saved.</p>
+
+  <div class="stat-row">
+    <div class="stat"><div class="n">23</div><div class="k">models tested</div></div>
+    <div class="stat"><div class="n">297</div><div class="k">clips judged blind</div></div>
+    <div class="stat"><div class="n">~78%</div><div class="k">lower cost per usable clip</div></div>
+    <div class="stat"><div class="n">$0.59</div><div class="k">total spend, all runs</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>Step one: write down what "good" means</h2>
+  <p>You cannot benchmark taste you haven't defined. So before touching a model I had our editor review 64 clips
+  blind and score them, then read his comments back until the pattern showed itself. It was not subtle. Ten of his
+  notes said a version of the same thing:</p>
+  <blockquote>
+    Must end on a statement, not mid statement.
+    <cite>One of ten near-identical notes about endings</cite>
+  </blockquote>
+  <p>That became the first rule of the rubric, and it turned out to decide almost the whole tournament: <strong>a
+  clip has to end on a finished sentence.</strong> Narrative suspense is fine — grammatical truncation is not.
+  Ending on a cliffhanger reads as deliberate; ending mid-word reads as broken.</p>
+
+  <details class="deep">
+    <summary>The rubric, and how the scale was anchored<span class="hint">layer two</span></summary>
+    <div class="body">
+      <p><b>Priorities, in order.</b> 1 — Ending quality is decisive; the payoff, punchline or resolved thought must
+      land. 2 — The start must be understandable; no dropping the viewer mid-sentence. 3 — It must be an actual
+      moment: a peak, reveal, joke, reaction or turn, not merely coherent information. 4 — Emotional rhythm is part
+      of the moment; don't cut on the important word when the reaction completes it. 5 — Music needs the hook, not a
+      random verse. 6 — Duplicates are scored on their own merits; repetition is a separate concern. 7 — Visual
+      dependence is metadata, never an automatic penalty.</p>
+      <p><b>Scale.</b> 4 = publishable as selected · 3 = strong moment, one small boundary fix away · 2 = useful idea,
+      materially incomplete · 1 = no worthwhile moment.</p>
+      <p><b>Anchoring.</b> One human decision in the calibration set was thrown out before I used it — a duplicate
+      clip scored zero purely because the reviewer had already seen it twice. Fatigue is not a quality signal, and
+      leaving it in would have taught the rubric to punish repetition.</p>
+    </div>
+  </details>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Step two: judge blind, then unseal</h2>
+  <p>Every candidate was stripped of its model name, shuffled, and scored one at a time. Reputation is the enemy of
+  a fair benchmark — knowing a clip came from a frontier model is worth about half a point of unearned credit, and
+  I did not trust myself to ignore it.</p>
+  <p>The result was a field that mostly agreed with itself. Nearly every model found the same good moments: the
+  same confession in the drama reel, the same prayer in the boxing stream, the same "I made zero dollars" reveal in
+  the documentary. <strong>What separated them was where they cut.</strong></p>
+
+  <div class="scroll">
+    <table>
+      <caption>Blind scores, both rounds, aligned to one 1–4 scale. "Ready to post" means publishable with no edit.</caption>
+      <thead><tr><th>Model</th><th>Score /4</th><th>Ready to post</th><th>Right length</th><th>Cost per good clip</th></tr></thead>
+      <tbody>
+        <tr class="win"><td>GPT-5.6 Luna</td><td>3.36</td><td>50%</td><td>100%</td><td>$0.0033</td></tr>
+        <tr><td>Qwen 3.5 397B</td><td>3.25</td><td>31%</td><td>81%</td><td>$0.0015</td></tr>
+        <tr><td>Gemini 3.6 Flash</td><td>3.19</td><td>25%</td><td>81%</td><td>$0.0037</td></tr>
+        <tr><td>Qwen 3.7 Flash</td><td>3.18</td><td>29%</td><td>100%</td><td>$0.0003</td></tr>
+        <tr><td>GPT-4o <em>(the incumbent)</em></td><td>3.00</td><td>31%</td><td>85%</td><td>$0.0071</td></tr>
+        <tr><td>Gemini 3.5 Flash-Lite</td><td>2.87</td><td>13%</td><td>67%</td><td>$0.0011</td></tr>
+        <tr><td>GPT-4o Mini</td><td>1.47</td><td>0%</td><td>7%</td><td>$0.0040</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>The incumbent finished mid-table while costing the most per usable clip. Two models beat it on quality
+  <em>and</em> price. One model at the bottom proposed a one-second clip.</p>
+
+  <div class="callout">
+    <div class="t">The number I'd defend</div>
+    <p>Roughly <span class="fig">76–80%</span> lower cost per usable clip than the GPT-4o baseline, at a
+    <strong>higher</strong> blind quality score. Measured two independent ways — per usable clip across all 297
+    candidates, and per completed case on six frozen videos — landing within three points of each other.</p>
+  </div>
+
+  <details class="deep">
+    <summary>Availability findings, kept separate from quality<span class="hint">layer two</span></summary>
+    <div class="body">
+      <p>A model that refuses or fails is not a model that scored badly, and mixing the two produces a dishonest
+      leaderboard. Four routes never returned anything at all because of a data-retention policy mismatch — recorded
+      as unavailable, never as editorial zeros.</p>
+      <p>Two OpenAI-family models refused the same video: a raunchy game show. That is a reproducible content-policy
+      boundary, not bad luck — the newest one refused it four runs in a row. Any architecture built on those models
+      needs a second model for that lane.</p>
+      <p>One newcomer had genuinely good taste and unusable behaviour: 28 seconds per video, one reply that rambled
+      for four minutes and then broke mid-sentence, at eight times the cost of the leader. It was cut on operations,
+      not on judgement.</p>
+    </div>
+  </details>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Step three: the part I got wrong</h2>
+  <p>With a leader identified, I put ten head-to-head pairs in front of our editor as actual rendered video. Seven
+  of his ten notes complained about endings again. But something was off — he was rejecting clips I had scored as
+  clean, and rejecting <em>both</em> sides of a pair on the same grounds.</p>
+  <blockquote>
+    do not re — both said that instead of return
+    <cite>The note that broke the case open</cite>
+  </blockquote>
+  <p>The clip was supposed to end on the line <em class="q">"And do not return."</em> It was ending on
+  <em class="q">"And do not retur—"</em>. So I pulled the source audio and measured it.</p>
+
+  <ul class="timeline">
+    <li><b>The transcript said the line ended at 237.44 seconds.</b> Every model cut there. Correctly — that is what
+    the transcript told them.</li>
+    <li><b>The word actually ends at 237.86 seconds.</b> The speech-to-text boundary had landed 0.42 seconds early,
+    inside the word.</li>
+    <li><b>There is a 0.10-second dip in the middle of "return".</b> The audio finisher's silence detector treated
+    that dip as the end of speech and cut there — the exact gap that caused the problem.</li>
+    <li><b>The previous fix padded by 0.12 seconds.</b> It needed 0.42. It could never have worked.</li>
+  </ul>
+
+  <p>So four of the ten comparisons had been decided by a rendering bug rather than by editorial judgement —
+  including the one testing whether a cheap model matched an expensive one, which came back "neither" because both
+  clips were chopped identically. <strong>The models were right. The transcript was wrong. The cutter believed the
+  transcript.</strong></p>
+
+  <p>Music was worse, and failed differently. The word <em class="q">"facts"</em> was rendering as
+  <em class="q">"fa"</em>, and no amount of silence-hunting would find it: a <em class="q">-cts</em> release is
+  high-frequency and low-energy, invisible under a bass-heavy master — and that track never goes quiet, so a
+  pause-seeking rule runs forever.</p>
+
+  <details class="deep">
+    <summary>The corrected finisher, and how it was verified<span class="hint">layer two</span></summary>
+    <div class="body">
+      <p><b>The rule.</b> From the model's chosen end, walk forward over sound — broadband energy <em>or</em>
+      high-frequency sibilance — skipping gaps shorter than 0.15 s, and stop at the first real pause. Add a 0.08 s
+      tail. Cap the extension at 0.60 s. Allow 0.30 s of slack past the next transcript segment, because the
+      transcript boundary itself carries about 0.4 s of error. Detect continuous music by dynamic range under 20 dB
+      and switch to tracking the vocal only.</p>
+      <p><b>Verification.</b> On the drama clip, high-frequency energy in the final 100 ms fell from −14.8 dB to
+      −31.5 dB — the word now completes and the audio settles before the clip ends. On the music clip, the sibilant
+      ratio fell from −9.0 dB (still ringing at the cut) to −19.7 dB.</p>
+      <p><b>The part that matters most.</b> On four of the twenty clips the tool <em>refuses</em> to help: the audio
+      runs straight from the chosen end into the next thought with no pause anywhere, so no trim can finish it.
+      Padding those would just bolt on half of the next sentence. Those are labelled model selection failures and
+      left untouched. A tool that hides a model's mistakes is worse than no tool.</p>
+    </div>
+  </details>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Where it stands</h2>
+  <p>The re-render is built and waiting: the same models, the same chosen moments, corrected cuts only, with pair
+  order and sides reshuffled so the previous session can't bias the result. It isolates model quality from render
+  quality and costs nothing to run.</p>
+  <p><strong>I have not declared a winner, and that is deliberate.</strong> The human result is currently unstable
+  and confounded by the rendering bug. The candidate-level repair pass I built went one win, one loss and two ties
+  against unrepaired clips while consuming 37% of the run's budget — so on this evidence it has not earned its
+  place, and saying otherwise would be inventing a conclusion the data doesn't support.</p>
+
+  <div class="callout">
+    <div class="t">What I'd want before deciding</div>
+    <p>Ten pairs is directional, not statistical. The cheap-versus-expensive question is still open because the one
+    comparison testing it was ruined by the render. And a music case with no detectable pause remains the weakest
+    lane in the whole system.</p>
+  </div>
+
+  <p>The lesson I actually took: <strong>most of the effort in an evaluation goes into making sure you are measuring
+  the thing you think you are measuring.</strong> For a week the numbers said the models were failing at endings.
+  Half of that was a tenth of a second of audio.</p>
+</section>
+
+<div class="next">
+  <a href="renovation.html"><span>Previous case</span>← The Renovation</a>
+  <a href="./"><span>Back</span>Index</a>
+</div>
+
+<footer>
+  <p style="margin:0">Kobby Adjei · <a href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a></p>
+</footer>
+
+</div>
+</body>
+</html>
