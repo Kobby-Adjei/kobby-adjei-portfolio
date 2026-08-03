@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Renovation — Kobby Adjei</title>
+<title>The Renovation · Kobby Adjei</title>
 <meta name="description" content="A UI renovation run as one movement: one thesis, five principles, twenty-one logged changes to a film-marketing product.">
 <link rel="stylesheet" href="assets/ics.css">
 <link rel="stylesheet" href="assets/site.2.css">
@@ -30,44 +30,47 @@ img{max-width:100%;height:auto}
 <header class="hero">
   <div class="eyebrow">Case one · Product design · FlmLnk</div>
   <h1>The product read as generated, not made.</h1>
-  <p class="lede" style="margin-top:26px">FlmLnk is a marketing tool for filmmakers. It worked. But it wore the
-  costume of every other AI app that shipped that year — the sparkle avatar, the rocket icon, the co-pilot
-  tagline — and filmmakers could feel it.</p>
-  <p>So I stopped treating it as a list of ugly screens and started treating it as one problem with one cause.
-  What follows is the frame I used, then five changes that came out of it, in the order they taught me something.</p>
+  <p class="lede" style="margin-top:26px">FlmLnk is a marketing tool for filmmakers. The people using it are
+  usually doing their own distribution for the first time, and most of them are not marketers.</p>
+  <p>The product worked. It also looked like every other AI application released that year. A sparkle avatar, a
+  rocket icon, a co-pilot tagline, and blue accents on a red brand. Individually these are small. Together they
+  tell a filmmaker that the tool was assembled from defaults, which is a problem for a product asking them to
+  stake a launch on it.</p>
+  <p>This page covers the frame used to fix that, then five changes that came out of it. Each one follows the
+  same shape as the log entry behind it: the screen, the problem, the change, and why it matters.</p>
 </header>
 
 <section>
-  <h2>The frame: one thesis, five principles</h2>
-  <p>Everything below traces back to a single sentence:</p>
+  <h2>The frame</h2>
+  <p>Every change traces back to one sentence.</p>
   <blockquote>
     Every change removes something that made the product feel unsure of itself.
-    <cite>The thesis the whole renovation hangs on</cite>
+    <cite>The thesis for the renovation</cite>
   </blockquote>
-  <p>That framing did more work than any individual fix. It converted a hundred small aesthetic arguments into one
-  question anyone on the team could answer: <strong>does this make the product look like it knows what it is?</strong>
-  A borrowed look is a borrowed identity.</p>
-  <p>Underneath it sit five principles. Every entry in the log is tagged to one of them, which is what stops a
-  renovation drifting into personal preference:</p>
+  <p>That sentence does more work than any single fix. It converts a long run of aesthetic opinions into one
+  question any member of the team can answer, which is whether a given screen looks like it knows what it is.</p>
+  <p>Five principles sit underneath it. Every entry in the log is tagged to one of them, which is what keeps a
+  renovation from drifting into personal taste.</p>
   <ol class="principles">
-    <li><b>Brand carries the screen.</b> Remove the generic AI signifiers; let the reel mark, the serif, and the poster art do the talking.</li>
-    <li><b>Clarity is a feature.</b> Anything that neither informs nor steps aside is noise — and the user came here to spend attention on their film.</li>
-    <li><b>Acknowledge instantly.</b> Feedback latency reads as breakage; never make the user wonder if they were heard.</li>
-    <li><b>Personality is felt, not noticed.</b> Texture and warmth up to, but never past, the point where they compete with the content.</li>
+    <li><b>Brand carries the screen.</b> Remove the generic AI signifiers and let the reel mark, the serif, and the poster art do the work.</li>
+    <li><b>Clarity is a feature.</b> Every element should either carry information or step aside. If it does neither it is noise, and noise costs the user attention they came to spend on their film.</li>
+    <li><b>Acknowledge instantly.</b> Feedback latency reads as breakage, so the system should never leave a user wondering whether it heard them.</li>
+    <li><b>Personality is felt, not noticed.</b> Texture and warmth are worth having up to the point where they start competing with the content.</li>
     <li><b>One accent, one voice.</b> Consistency is what makes a product read as trustworthy.</li>
   </ol>
 
   <details class="deep">
     <summary>How the work is recorded<span class="hint">layer two</span></summary>
     <div class="body">
-      <p>The renovation is an append-only log, not a document that gets rewritten. Every shipped change gets an entry
-      in the same shape — screen and context, the problem before, the change after, why it matters, and the principle
-      it traces to — plus a before/after frame pair sharing a base filename so the two can always be lined up.</p>
-      <p>Twenty-one entries so far, grouped into chapters: individual screen fixes, a cross-screen redundancy audit,
-      the Flow chat movement, and the public page movement. Deep changes get a case study of their own that the log
-      points to.</p>
-      <p>The reason for the discipline is boring and important. By the tenth change the argument was already shorter,
-      because the principles had been settled once instead of re-litigated every time.</p>
+      <p>The renovation is an append-only log rather than a document that gets rewritten. Every shipped change gets
+      an entry in a fixed shape, covering the screen and its context, the problem before, the change after, why it
+      matters, and the principle it traces to. Each entry also has a before and after frame sharing a base filename,
+      so the two can always be lined up.</p>
+      <p>There are twenty-one entries so far, grouped into chapters. Those chapters cover individual screen fixes, a
+      cross-screen redundancy audit, the Flow chat movement, and the public page movement. Changes that need more
+      room get a case study of their own, which the log points to.</p>
+      <p>The practical benefit is that by the tenth change the discussion was shorter than it was at the first,
+      because the principles had been settled once instead of being re-argued each time.</p>
     </div>
   </details>
 </section>
@@ -75,106 +78,113 @@ img{max-width:100%;height:auto}
 <hr class="rule">
 
 <section>
-  <h2>1 · Where it started: three mental models on one screen</h2>
-  <p>The home screen was the first entry, and it set the pattern for everything after — the problem was never
-  decoration, it was structure.</p>
+  <h2>1 · Dashboard home</h2>
+  <p>The home screen was the first entry in the log, and it set the pattern for the rest of the work.</p>
 
   <figure>
     <div class="cmp">
       <img-comparison-slider keyboard="enabled" tabindex="0">
-        <img slot="first" src="assets/before-dashboard.jpg" alt="Dashboard home before: three step cards and a five-panel carousel">
-        <img slot="second" src="assets/after-dashboard.jpg" alt="The slate: a clapperboard carrying the three steps">
+        <img slot="first" src="assets/before-dashboard.jpg" alt="Dashboard home before, showing three step cards above a five-panel carousel">
+        <img slot="second" src="assets/after-dashboard.jpg" alt="The slate, a clapperboard carrying the three steps">
       </img-comparison-slider>
       <span class="tag b">Before</span><span class="tag a">After</span>
     </div>
-    <figcaption><b>Drag the handle.</b> Before: three step cards repeating links already in the sidebar, a five-panel
-    carousel hiding four panels behind dots, and Create as a third way in — so there was no single main action.
-    After: one clapperboard slate carrying the same three steps.</figcaption>
+    <figcaption>Drag to compare.</figcaption>
   </figure>
 
-  <p>The diagnosis that mattered: this wasn’t ugly, it was <strong>three mental models stacked on one screen</strong>
-  — a guided wizard, an open canvas, and a dashboard. You cannot fix that with spacing.</p>
-  <p>The slate answers it in the product’s own language. One object, one path, and a film-set metaphor doing the work
-  that three competing containers were failing to do.</p>
+  <p><b>The problem.</b> Three step cards repeated links that already existed in the sidebar. A five-panel carousel
+  hid four of its five panels behind dots. Create was a third way into the same flow, so no single action was
+  primary. The screen was carrying three mental models at once, which were a guided wizard, an open canvas, and a
+  dashboard.</p>
+  <p><b>The change.</b> One clapperboard slate carries the same three steps, and the competing containers are gone.</p>
+  <p><b>Why it matters.</b> A new user could not tell where to start, and a returning user was looking at cards that
+  no longer applied to them. Adjusting spacing would not have fixed either, because the fault was in the structure
+  rather than the styling. The slate also states the product in film language, which is the audience the tool is
+  built for.</p>
 </section>
 
 <section>
-  <h2>2 · Not every fix is a visual one</h2>
-  <p>The next entry is the one I would point a hiring manager at, because it isn’t a redesign. It’s an architecture
-  call, logged in the same place as the visual work.</p>
+  <h2>2 · Generate Assets</h2>
+  <p>This entry is an architecture decision rather than a visual one, recorded in the same log as the rest.</p>
 
   <figure>
     <div class="cmp">
       <img-comparison-slider keyboard="enabled" tabindex="0">
-        <img slot="first" src="assets/before-generate.jpg" alt="Generate Assets before: a cramped modal floating over the app">
-        <img slot="second" src="assets/after-generate.jpg" alt="Generate Assets after: a full page with room for the work">
+        <img slot="first" src="assets/before-generate.jpg" alt="Generate Assets before, running inside a modal over the app">
+        <img slot="second" src="assets/after-generate.jpg" alt="Generate Assets after, running as a full page">
       </img-comparison-slider>
       <span class="tag b">Before</span><span class="tag a">After</span>
     </div>
-    <figcaption><b>Generate Assets should not have been a modal.</b> Generation is the longest, highest-stakes thing
-    a user does here — a five-step flow that ends in real output. A modal frames it as an interruption you dismiss,
-    and boxes that flow into a floating card.</figcaption>
+    <figcaption>Drag to compare.</figcaption>
   </figure>
 
-  <p>Same steps, same content — but a full page tells the truth about how long the task takes and how much it
-  matters. The give-away is in the before: the step rail is squeezed and the content scrolls inside the card. The
-  container was already losing an argument with the work.</p>
+  <p><b>The problem.</b> Generation ran inside a modal. It is a five-step flow that ends in real output, and it is
+  the longest task in the product. In the before frame the step rail is compressed and the content scrolls inside
+  the card, which is a sign the container was already too small for the work.</p>
+  <p><b>The change.</b> The same five steps now run as a full page instead of a floating card.</p>
+  <p><b>Why it matters.</b> A modal is the pattern for something a user dismisses to get back to their real task.
+  Generation is the real task. Matching the container to the weight of the work removes a quiet contradiction
+  between what the product says and what it does.</p>
 </section>
 
 <hr class="rule">
 
 <section>
-  <h2>3 · The centrepiece: the Flow chat</h2>
-  <p>The assistant is the surface a filmmaker actually talks to, so it got a full movement rather than a patch —
-  five logged entries across identity, clarity, trust, comfort and focus. This is where the thesis is most visible.</p>
+  <h2>3 · Flow chat</h2>
+  <p>Flow is the assistant inside FlmLnk and the surface filmmakers spend the most time in. It received five logged
+  entries rather than a single fix, covering identity, clarity, trust, comfort and focus.</p>
 
   <figure>
     <div class="cmp">
       <img-comparison-slider keyboard="enabled" tabindex="0">
-        <img slot="first" src="assets/before-flow-chat.jpg" alt="Flow chat before: sparkle avatar, generic assistant, repeated New Chat rows">
-        <img slot="second" src="assets/after-flow-chat.jpg" alt="Flow chat after: reel mark avatar, named Flow, real chat titles">
+        <img slot="first" src="assets/before-flow-chat.jpg" alt="Flow chat before, with a sparkle avatar and repeated New Chat rows">
+        <img slot="second" src="assets/after-flow-chat.jpg" alt="Flow chat after, with the reel mark avatar and real chat titles">
       </img-comparison-slider>
       <span class="tag b">Before</span><span class="tag a">After</span>
     </div>
-    <figcaption><b>Identity and clarity in one frame.</b> The sparkle avatar — the universal &ldquo;this is an AI&rdquo; glyph —
-    became the FlmLnk reel mark, and <em class="q">Assistant</em> became <em class="q">Flow</em>. In the sidebar, six
-    rows reading <em class="q">New Chat</em> became real titles, because a chat is now a draft until you actually say
-    something.</figcaption>
+    <figcaption>Drag to compare.</figcaption>
   </figure>
 
-  <p>The change I care about most isn’t visible in any screenshot. The thinking indicator used to fire only after a
-  database round-trip and the model’s first token — so when you hit send, nothing happened for a beat. That beat is
-  where a user decides the product is broken.</p>
-  <p>Now it fires the instant you send, before any network work, and the reel spins while it thinks.
-  <strong>Nothing about the model got faster.</strong> The product just stopped leaving people in doubt — and the
-  loading moment became a brand moment instead of a dead one.</p>
+  <p><b>The problem.</b> The chat wore the generic AI costume. A sparkle avatar, which is the common signal for
+  "this is an AI", sat next to the label "Assistant". The history filled with rows reading "New Chat", because
+  opening a chat saved an empty session immediately. Image cards printed the raw generation prompt as their
+  caption, which was identical across a whole row and buried the poster art.</p>
+  <p><b>The change.</b> The sparkle avatar became the FlmLnk reel mark and "Assistant" became "Flow". A chat is now
+  a draft until the first message is sent, so the history only holds sessions that exist. Prompt captions were
+  removed from the cards and moved into the detail view.</p>
+  <p><b>Why it matters.</b> A borrowed look is a borrowed identity. Every one of those defaults told a filmmaker
+  that the product was assembled rather than built, and the history in particular was unusable for its actual
+  purpose, which is finding a conversation again.</p>
+
+  <p>The change with the largest effect on trust does not appear in a screenshot. The thinking indicator used to
+  fire only after a database round trip and the model's first token, so nothing happened for a moment after the
+  user hit send. That moment is where a user decides the product is broken. It now fires as soon as the message is
+  sent, before any network request runs.</p>
 
   <div class="callout">
-    <div class="t">The principle doing the work</div>
-    <p>Feedback latency reads as breakage even when the work is fine. It is the cheapest trust win in most products,
-    and it is almost always left on the floor.</p>
+    <div class="t">Worth stating plainly</div>
+    <p>Model latency did not change. The product simply stopped leaving people uncertain about whether it had heard
+    them, which is one of the cheapest trust improvements available in most software.</p>
   </div>
 
   <details class="deep">
-    <summary>The full Flow chat movement — five entries<span class="hint">layer two</span></summary>
+    <summary>All five Flow chat entries<span class="hint">layer two</span></summary>
     <div class="body">
-      <p><b>07 · Identity.</b> Sparkle avatar → reel mark. Rocket dropped from Upgrade, swapped to an eye on Preview,
-      because a rocket means launch, not look. Blue image badge and accent bar → film-red. Co-pilot tagline removed.
-      The three in-chat sparkles became a telescope (researching), a spinner (thinking), and a plus (generate). Asset
-      and poster cards given sharp corners under a &ldquo;soft chrome, sharp posters&rdquo; rule, so a poster reads as a poster
-      and not an app tile.</p>
-      <p><b>08 · Clarity.</b> Image cards were printing the raw generation prompt as their caption — identical across
-      a whole row, burying the poster art. Captions removed; the poster is the information, and the prompt moved to
-      the detail view. Opening a chat used to save an empty session immediately, so history filled with
-      indistinguishable &ldquo;New Chat&rdquo; rows; a chat is now a draft until the first message. Zero counts hidden.</p>
-      <p><b>09 · Trust.</b> The thinking indicator moved ahead of the save round-trip and the first token. The
+      <p><b>07, identity.</b> Sparkle avatar to the reel mark. The rocket was dropped from Upgrade and swapped for an
+      eye on Preview, because a rocket means launch and the action is look. The blue image badge and accent bar moved
+      to the film-red token. The co-pilot tagline was removed. The three in-chat sparkles became a telescope for
+      researching, a spinner for thinking, and a plus for generate. Asset and poster cards were given sharp corners
+      under a "soft chrome, sharp posters" rule, so a poster reads as a poster rather than an app tile.</p>
+      <p><b>08, clarity.</b> Image card captions removed, prompts moved to the detail view, chats saved only after a
+      first message, and zero counts hidden on empty folders.</p>
+      <p><b>09, trust.</b> The thinking indicator moved ahead of the save round trip and the first token, and the
       redundant pill spinner was removed.</p>
-      <p><b>10 · Comfort.</b> The conversation sat on a flat black void that read as a placeholder. Added a faint dot
-      stipple behind the conversation only — never the welcome screen, never over content — and made message bubbles
-      opaque so texture can’t bleed through text.</p>
-      <p><b>11 · Focus.</b> The conversation was pinned to a narrow centred column that wasted the panel. Widened to a
-      fitted measure that reclaims the room without letting lines run off the eye, and added a collapse-to-rail
-      toggle for the history sidebar that remembers the choice instead of resetting it.</p>
+      <p><b>10, comfort.</b> The conversation sat on a flat black void that read as a placeholder. A faint dot stipple
+      now sits behind the conversation only, never behind the welcome screen and never over content, and message
+      bubbles were made opaque so the texture cannot show through text.</p>
+      <p><b>11, focus.</b> The conversation was pinned to a narrow centred column that wasted the panel. It now uses a
+      fitted measure that reclaims the space without letting lines run too long, and the history sidebar collapses to
+      a rail and remembers that choice.</p>
     </div>
   </details>
 </section>
@@ -182,86 +192,85 @@ img{max-width:100%;height:auto}
 <hr class="rule">
 
 <section>
-  <h2>4 · When a form should have been a sentence</h2>
-  <p>By this point the principles were settled enough to attack something harder than styling. The email composer
-  was the densest screen in the product.</p>
+  <h2>4 · Email composer</h2>
+  <p>This was the densest screen in the product.</p>
 
   <figure>
     <div class="cmp">
       <img-comparison-slider keyboard="enabled" tabindex="0">
-        <img slot="first" src="assets/before-emails.jpg" alt="Email campaigns before: a dense form of dropdowns, chips and all-caps labels">
-        <img slot="second" src="assets/after-emails.jpg" alt="Emails after: a fill-in-the-blank sentence">
+        <img slot="first" src="assets/before-emails.jpg" alt="Email campaigns before, a dense form of chips, dropdowns and all-caps labels">
+        <img slot="second" src="assets/after-emails.jpg" alt="Emails after, a sentence with blanks to fill in">
       </img-comparison-slider>
       <span class="tag b">Before</span><span class="tag a">After</span>
     </div>
-    <figcaption><b>Before:</b> data-context chips, a campaign name, a template picker, tone and length dropdowns, a
-    send-to panel and a Generate button — a wall of controls in all-caps, and you had to understand all of it before
-    anything could happen. <b>After:</b> one sentence you fill in — <em class="q">Write a casual, medium email
-    about [topic], to all your fans</em> — and a button that says <em class="q">Write it</em>.</figcaption>
+    <figcaption>Drag to compare.</figcaption>
   </figure>
 
-  <p>The controls didn’t disappear. They became grammar. Same options, rearranged into something a person already
-  knows how to read, so the screen teaches itself instead of demanding to be learned. That is <em class="q">clarity
-  is a feature</em> applied to interaction rather than to decoration.</p>
+  <p><b>The problem.</b> The screen presented data-context chips, a campaign name, a template picker, tone and
+  length dropdowns, a send-to panel and a Generate button, most of it labelled in capitals. All of it had to be
+  understood before anything could happen, and the person using it is a filmmaker rather than a marketer.</p>
+  <p><b>The change.</b> The same options are now a single sentence with blanks in it, reading "Write a casual,
+  medium email about [topic], to all your fans", followed by a button that says "Write it".</p>
+  <p><b>Why it matters.</b> None of the options were removed. They were moved into a structure people already know
+  how to read, so the screen explains itself instead of requiring the user to learn it first.</p>
 </section>
 
 <section>
-  <h2>5 · The surface other people see</h2>
-  <p>The last one matters for a different reason. Everything above is seen by the filmmaker. This one is seen by
-  their audience.</p>
+  <h2>5 · Public Links</h2>
+  <p>Every screen above is used by the filmmaker. This one is seen by their audience.</p>
 
   <figure>
     <div class="cmp">
       <img-comparison-slider keyboard="enabled" tabindex="0">
-        <img slot="first" src="assets/before-public-links.jpg" alt="Public links before: caps subtitle, status pill, six icon buttons per row">
-        <img slot="second" src="assets/after-public-links.jpg" alt="Public links after: the page renders as a preview of itself">
+        <img slot="first" src="assets/before-public-links.jpg" alt="Public links before, with an all-caps subtitle and six icon buttons per row">
+        <img slot="second" src="assets/after-public-links.jpg" alt="Public links after, with each page rendered as a preview of itself">
       </img-comparison-slider>
       <span class="tag b">Before</span><span class="tag a">After</span>
     </div>
-    <figcaption><b>Public Links.</b> Before: a shouting all-caps subtitle, a status pill, and six identical icon
-    buttons crammed under each row — the page described itself instead of showing you the work. After: the published
-    page renders as a preview of itself, actions calm to one primary <em class="q">Open</em>, and the empty slot
-    invites the next page instead of sitting dead.</figcaption>
+    <figcaption>Drag to compare.</figcaption>
   </figure>
 
-  <p>A published film page carries more reputational weight per pixel than anything else in the product, because a
-  filmmaker sends it to people they want to impress. Showing the artefact instead of describing it is the whole
-  change.</p>
+  <p><b>The problem.</b> An all-caps subtitle, a status pill, and six identical icon buttons under each row. The
+  screen described what it was instead of showing the page the filmmaker had made.</p>
+  <p><b>The change.</b> Each published page now renders as a preview of itself, the actions reduce to one primary
+  button labelled Open, and the empty slot invites the next page rather than sitting unused.</p>
+  <p><b>Why it matters.</b> A published film page carries more reputational weight than anything else in the
+  product, because filmmakers send it to people they are trying to impress. Showing the artefact is more useful
+  than describing it.</p>
 </section>
 
 <hr class="rule">
 
 <section>
-  <h2>Where it is today</h2>
-  <p>Captured from live production while writing this, so you get the honest state rather than a curated one:</p>
+  <h2>Current state in production</h2>
+  <p>This frame was captured from the live product while this page was being written.</p>
   <figure>
-    <img src="assets/live-today.jpg" alt="FlmLnk in production today: the reel view with the film-strip carousel"
+    <img src="assets/live-today.jpg" alt="FlmLnk in production, showing the reel view"
          style="border-radius:12px;border:1px solid var(--rule);box-shadow:var(--shadow)">
-    <figcaption>The reel view in production. <b>Note what hasn’t shipped yet:</b> the rocket is still on
-    <em class="q">Upgrade my plan</em>, and the composer still calls Flow a <em class="q">strategic co-pilot</em> —
-    two things the log says should be gone. The renovation ships in stages, and the log runs ahead of the
-    deploy.</figcaption>
+    <figcaption>Two logged changes have not shipped yet. The rocket is still on Upgrade my plan, and the composer
+    still describes Flow as a strategic co-pilot.</figcaption>
   </figure>
-  <p>I would rather show that than pretend a movement like this lands all at once. The point of keeping a log is
-  precisely that it tells you what is still outstanding.</p>
+  <p>A renovation of this size ships in stages, and the log runs ahead of the deploy. Showing the current state is
+  more useful than showing only the frames where the work is complete, and tracking what is still outstanding is
+  part of what the log is for.</p>
 </section>
 
 <section>
-  <h2>What I’d defend, and what I wouldn’t</h2>
-  <p><strong>The log is the real artefact.</strong> Any designer can produce a nicer screen. Keeping twenty-one
-  changes traceable to five principles is what turns that into a system somebody else can extend without me in the
-  room — and it is why the tenth change took less argument than the first.</p>
-  <p><strong>What’s missing is measurement.</strong> This case is reasoned, not tested. I can show you that the
-  thinking indicator now fires before the network call, and argue from what is known about feedback latency that it
-  matters — but I have not run the study that proves the trust win on these users. The honest claim is a
-  better-argued product, not a proven one.</p>
-  <p>Which is exactly the gap the second case closes. There I had to stop arguing and start measuring —
-  <a class="link" href="tournament.html">and the measurement caught me being wrong</a>.</p>
+  <h2>Scope, and what was not done</h2>
+  <p>The log is the main output of this work. Producing one better screen is common. Keeping twenty-one changes
+  traceable to five stated principles is what makes the work something another person can extend without the
+  original author present.</p>
+  <p>This case is reasoned rather than measured. The thinking indicator demonstrably fires before the network
+  request, and there is established research on how feedback latency affects perceived reliability, but no study
+  was run on FlmLnk's own users to confirm the effect here. The accurate claim is a better-argued product, not a
+  proven one.</p>
+  <p>The second case covers that gap, because it required measurement rather than argument.
+  <a class="link" href="tournament.html">It also found an error in the measurement itself.</a></p>
 </section>
 
 <div class="next">
   <a href="./"><span>Back</span>Index</a>
-  <a href="tournament.html"><span>Next case</span>The Tournament →</a>
+  <a href="tournament.html"><span>Next case</span>The Tournament</a>
 </div>
 
 <footer>

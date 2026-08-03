@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kobby Adjei — making taste explicit</title>
+<title>Kobby Adjei · Design and AI evaluation</title>
 <meta name="description" content="Design and AI evaluation work: a UI renovation with a stated thesis, and a blind 23-model tournament for clip selection.">
 <link rel="stylesheet" href="assets/site.2.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◐</text></svg>">
@@ -28,12 +28,12 @@ img{max-width:100%;height:auto}
 
 <header class="hero">
   <div class="sig">Design &amp; AI engineering · FlmLnk, Inc. · Remote</div>
-  <h1>Most teams argue about taste.<br>I try to <em>write it down.</em></h1>
-  <p class="lede" style="margin-top:28px">Two pieces of work, one habit. In the first I turned a product's design instinct
-  into stated principles and a log of every change. In the second I turned an editor's instinct into a rubric,
-  then scored 23 AI models against it blind.</p>
-  <p>Both answer the same question in different rooms: <strong>what exactly makes this good, and how would we know
-  if it got worse?</strong></p>
+  <h1>Writing down what &ldquo;good&rdquo; means, then holding a product to it.</h1>
+  <p class="lede" style="margin-top:28px">Two pieces of work at FlmLnk, a marketing tool for filmmakers. The first
+  turned a product's design decisions into stated principles and a log of every change. The second turned an
+  editor's judgement into a rubric, then scored 23 AI models against it blind.</p>
+  <p>Both answer the same question. <strong>What makes this good, and how would anyone know if it got
+  worse?</strong></p>
 </header>
 
 <section class="tight">
@@ -42,8 +42,8 @@ img{max-width:100%;height:auto}
     <a class="case craft" href="renovation.html">
       <div class="kicker">Case one · Product design</div>
       <h3>The Renovation</h3>
-      <p>A product that read as generated, not made. One thesis, five principles, and twenty-one shipped
-      changes logged as a single movement rather than a pile of fixes — with the five that taught me the most laid out side by side.</p>
+      <p>The product looked like every other AI application released that year. One thesis, five principles, and
+      twenty-one logged changes. Five of them are shown here as before and after comparisons.</p>
       <div class="facts">
         <div><b>21</b>changes shipped</div>
         <div><b>5</b>stated principles</div>
@@ -55,8 +55,8 @@ img{max-width:100%;height:auto}
     <a class="case" href="tournament.html">
       <div class="kicker">Case two · AI evaluation</div>
       <h3>The Tournament</h3>
-      <p>Which model picks the best clips? I judged 297 candidates without knowing who made them — and found
-      the real bug was hiding in a tenth of a second of audio.</p>
+      <p>Which model picks the best clips. 297 candidates were scored without knowing which model produced them.
+      The result was decided by a fault in a tenth of a second of audio.</p>
       <div class="facts">
         <div><b>23</b>models tested</div>
         <div><b>297</b>clips judged blind</div>
@@ -70,24 +70,23 @@ img{max-width:100%;height:auto}
 
 <section>
   <h2>Why these two sit together</h2>
-  <p>A design system and a model benchmark look like different disciplines. They are the same move made twice.</p>
-  <p>In both, the hard part is not the building. It is getting a fuzzy judgement — <em class="q">this feels
-  cheap</em>, <em class="q">this clip is good</em> — into a form precise enough that someone else can apply it,
-  disagree with it, or prove it wrong. Principles do that for design. A rubric and a blind protocol do it for
-  a model.</p>
-  <p>Once taste is written down, two useful things follow. You can hold quality steady while changing everything
-  underneath it — which is how the model work cut inference cost by roughly three quarters without the output
-  getting worse. And you can tell the difference between a real regression and someone simply not liking it
-  today.</p>
+  <p>A design system and a model benchmark look like separate disciplines. The method is the same one applied
+  twice.</p>
+  <p>In both cases the difficult part is not the building. It is taking a judgement like "this feels cheap" or
+  "this clip is good" and stating it precisely enough that another person can apply it, disagree with it, or show
+  that it is wrong. Principles do that for a design. A rubric and a blind protocol do it for a model.</p>
+  <p>Two things follow once the standard is written down. Quality can be held steady while the implementation
+  changes underneath it, which is how the model work reduced inference cost by roughly three quarters without the
+  output getting worse. A genuine regression can also be told apart from a difference of opinion.</p>
   <blockquote>
-    A clip may end with narrative curiosity, but its language should feel complete. Suspense feels intentional;
-    grammatical truncation feels broken.
-    <cite>The one line from the rubric that decided most of the tournament</cite>
+    A clip may end with narrative curiosity, but its language should feel complete. Suspense feels intentional.
+    Grammatical truncation feels broken.
+    <cite>The line from the rubric that decided most of the tournament</cite>
   </blockquote>
 </section>
 
 <footer>
-  <p style="margin:0">Kobby Adjei · AI Platform Development Intern at FlmLnk, Inc. ·
+  <p style="margin:0">Kobby Adjei. AI Platform Development Intern at FlmLnk, Inc.
   <a href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a></p>
 </footer>
 
