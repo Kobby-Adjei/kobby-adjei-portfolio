@@ -5,8 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kobby Adjei — making taste explicit</title>
 <meta name="description" content="Design and AI evaluation work: a UI renovation with a stated thesis, and a blind 23-model tournament for clip selection.">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.2.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◐</text></svg>">
+<style>
+/* Critical layout floor. Inlined on purpose: the HTML is always revalidated, so
+   even a stale external stylesheet cannot let these images render at their
+   intrinsic 1500px and blow out the column. */
+img-comparison-slider,.cmp{display:block;width:100%;max-width:100%}
+img-comparison-slider img{display:block;width:100%;height:auto}
+img{max-width:100%;height:auto}
+</style>
 </head>
 <body>
 
@@ -35,11 +43,11 @@
       <div class="kicker">Case one · Product design</div>
       <h3>The Renovation</h3>
       <p>A product that read as generated, not made. One thesis, five principles, and twenty-one shipped
-      changes logged as a single movement rather than a pile of fixes.</p>
+      changes logged as a single movement rather than a pile of fixes — with the five that taught me the most laid out side by side.</p>
       <div class="facts">
         <div><b>21</b>changes shipped</div>
         <div><b>5</b>stated principles</div>
-        <div><b>50</b>before/after frames</div>
+        <div><b>5</b>before/after pairs</div>
       </div>
       <div class="go">Read the case →</div>
     </a>

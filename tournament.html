@@ -5,8 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Tournament — Kobby Adjei</title>
 <meta name="description" content="A blind evaluation of 23 AI models on clip selection: 297 candidates judged without model identities, a ~78% cost reduction, and a bug hiding in a tenth of a second of audio.">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/site.2.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◐</text></svg>">
+<style>
+/* Critical layout floor. Inlined on purpose: the HTML is always revalidated, so
+   even a stale external stylesheet cannot let these images render at their
+   intrinsic 1500px and blow out the column. */
+img-comparison-slider,.cmp{display:block;width:100%;max-width:100%}
+img-comparison-slider img{display:block;width:100%;height:auto}
+img{max-width:100%;height:auto}
+</style>
 </head>
 <body>
 
@@ -26,6 +34,9 @@
   could do it without anyone noticing a drop in quality.</p>
   <p>Answering that honestly meant not trusting my own eye. I scored every candidate without knowing which model
   produced it, and only opened the mapping after the last score was saved.</p>
+  <p>If <a class="link" href="renovation.html">the first case</a> was about writing taste down so a team could argue
+  with it, this one is about writing it down so a <em>machine</em> could be scored against it — and then finding out
+  the scoring itself was broken.</p>
 
   <div class="stat-row">
     <div class="stat"><div class="n">23</div><div class="k">models tested</div></div>
