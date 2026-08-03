@@ -106,8 +106,8 @@ img{max-width:100%;height:auto}
 
 <section>
   <h2>Stage two: audit the screens against each other</h2>
-  <p>The second stage looked at four screens together rather than one at a time, which is the only way to find a
-  fault that repeats.</p>
+  <p>The second stage looked at four screens together rather than one at a time, so faults that repeat across
+  screens would show up.</p>
 
   <figure>
     <img src="assets/audit-evidence.jpg" alt="The Custom tab, where every card prints the same generation prompt as its caption" loading="lazy">
@@ -126,8 +126,8 @@ img{max-width:100%;height:auto}
     <cite>From the redundancy and clarity audit</cite>
   </blockquote>
 
-  <p>That is cheaper and more defensible than a redesign. The standard already exists inside the product, the team
-  has already accepted it, and the argument becomes a comparison rather than a matter of taste.</p>
+  <p>The standard already exists in the product and the team has already accepted it, so each finding becomes a
+  comparison against a live screen rather than a proposal.</p>
 
   <div class="audit">
     <figure>
@@ -147,9 +147,9 @@ img{max-width:100%;height:auto}
 <hr class="rule">
 
 <section>
-  <h2>The worst offender: the public page</h2>
-  <p>One surface deserved its own teardown. The public profile at <span class="num">/f/&lt;slug&gt;</span> is the
-  only screen a stranger ever sees, and it had borrowed its entire design language from a streaming service.</p>
+  <h2>The public page</h2>
+  <p>The public profile at <span class="num">/f/&lt;slug&gt;</span> is the only screen a stranger sees. It got its
+  own teardown because it had borrowed its design language from a streaming service.</p>
 
   <figure>
     <img src="assets/teardown-public.jpg" alt="The public film page marked up with six numbered faults and written notes" loading="lazy">
@@ -157,8 +157,7 @@ img{max-width:100%;height:auto}
     summary.</figcaption>
   </figure>
 
-  <p>The findings are worth reading in full because they show the difference between a screen that looks finished
-  and a screen that means anything.</p>
+  <p>Four of the six findings:</p>
   <p><b>A 98 percent match score copied from Netflix.</b> Match to what? There is no recommendation engine here, so
   the number is decoration wearing the costume of data.</p>
   <p><b>A TV-MA rating and a Feature Film label</b> mimicking a streaming title. A content rating on a personal page
@@ -465,15 +464,17 @@ img{max-width:100%;height:auto}
 
 <section>
   <h2>Scope, and what was not done</h2>
-  <p>The log is the main output of this work. Producing one better screen is common. Keeping twenty-one changes
-  traceable to five stated principles is what makes the work something another person can extend without the
-  original author present.</p>
-  <p>This case is reasoned rather than measured. The thinking indicator demonstrably fires before the network
-  request, and there is established research on how feedback latency affects perceived reliability, but no study
-  was run on FlmLnk's own users to confirm the effect here. The accurate claim is a better-argued product, not a
-  proven one.</p>
-  <p>The second case covers that gap, because it required measurement rather than argument.
-  <a class="link" href="tournament.html">It also found an error in the measurement itself.</a></p>
+  <p><b>Scope.</b> Twenty-one changes are logged and seven are shown here. All of them are interface only. No
+  Convex query, mutation or handler was changed in the public links, emails, settings or library work.</p>
+  <p><b>Not measured.</b> No study was run on FlmLnk's users. The thinking indicator fires before the network
+  request, which is verifiable in the code, but whether that changed how users judge the product was not tested.</p>
+  <p><b>Not shipped.</b> The public page teardown is a diagnosis with a planned redesign, and its findings are
+  still live in the product. Two logged changes, the rocket on Upgrade and the co-pilot line, are not yet
+  deployed either.</p>
+  <p><b>Not captured.</b> Four logged entries have no screenshots: the consistency pass across tab bars and
+  colour, the Film Credits interior, the loading work, and the generation progress in the browser tab.</p>
+  <p>The second case asks the same question with measurement instead of argument.
+  <a class="link" href="tournament.html">The measurement turned out to be faulty.</a></p>
 </section>
 
 <div class="next">
