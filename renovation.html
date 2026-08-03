@@ -78,6 +78,115 @@ img{max-width:100%;height:auto}
 <hr class="rule">
 
 <section>
+  <h2>Stage one: look before touching</h2>
+  <p>Before any screen was changed, two inspection reports were written. One covers Riverside Studio, a competitor
+  in the same creator-tool space. The other covers FlmLnk, written to be read beside it.</p>
+
+  <figure>
+    <img src="assets/benchmark-riverside.jpg" alt="Riverside Studio, inspected as a competitor benchmark" loading="lazy">
+    <figcaption><b>The benchmark.</b> Riverside runs a near-black surface with one violet accent used only on
+    primary actions. Every navigation item pairs an icon with a label, which FlmLnk did not do. Their default
+    collapsed sidebar is icon-only, which costs a new user recognition, and their secondary text sits low enough in
+    contrast to raise an accessibility question. Useful in both directions: some things to copy, some to avoid.</figcaption>
+  </figure>
+
+  <p>The FlmLnk report ends with a section that decided how the rest of the work was ordered. It
+  <b>separates confirmed bugs from design opinions.</b> A bug is a fact and gets fixed. An opinion has to be argued
+  and can be declined.</p>
+
+  <div class="callout">
+    <div class="t">Why that split matters</div>
+    <p>Without it, a renovation becomes one long list where a white-on-white theme bug and a preference about corner
+    radius carry equal weight. With it, the work can be prioritised, and the opinions can be challenged by anyone on
+    the team without slowing down the fixes.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Stage two: audit the screens against each other</h2>
+  <p>The second stage looked at four screens together rather than one at a time, which is the only way to find a
+  fault that repeats.</p>
+
+  <figure>
+    <img src="assets/audit-evidence.jpg" alt="The Custom tab, where every card prints the same generation prompt as its caption" loading="lazy">
+    <figcaption><b>The finding.</b> Every card prints the raw generation prompt as its caption. Because a whole row
+    is generated from one prompt, the identical sentence appears on every card in the row. It is not a title, it
+    says nothing about the individual asset, and it covers the artwork.</figcaption>
+  </figure>
+
+  <p>The audit then did something that shaped the entire renovation. Rather than inventing a new standard, it
+  <b>named a screen that was already right and made the others match it.</b></p>
+
+  <blockquote>
+    The reference screen is Clips. It already does the right things: real titles from content, one badge that
+    carries real information, the label sits in a footer instead of over the art. Every finding below is really
+    make the other screens behave like Clips.
+    <cite>From the redundancy and clarity audit</cite>
+  </blockquote>
+
+  <p>That is cheaper and more defensible than a redesign. The standard already exists inside the product, the team
+  has already accepted it, and the argument becomes a comparison rather than a matter of taste.</p>
+
+  <div class="audit">
+    <figure>
+      <img src="assets/audit-collections-before.jpg" alt="Collections marked up with four numbered faults" loading="lazy">
+      <figcaption><b>Collections, audited.</b> Two layers of text collide. The card prints the generation prompt on
+      top of poster art that already carries its own headline. Every pack repeats the same subtitle. Four separate
+      controls sit on every row header. The image tag repeats on every card.</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/audit-collections-after.jpg" alt="Collections after, marked up with the two changes" loading="lazy">
+      <figcaption><b>Collections, corrected.</b> A clean row title with no repeated subtitle, and cards that carry a
+      real name at the foot rather than a printed prompt. The behaviour Clips already had.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>The worst offender: the public page</h2>
+  <p>One surface deserved its own teardown. The public profile at <span class="num">/f/&lt;slug&gt;</span> is the
+  only screen a stranger ever sees, and it had borrowed its entire design language from a streaming service.</p>
+
+  <figure>
+    <img src="assets/teardown-public.jpg" alt="The public film page marked up with six numbered faults and written notes" loading="lazy">
+    <figcaption><b>Six faults, each with the reason.</b> The full teardown is a separate document; this is its
+    summary.</figcaption>
+  </figure>
+
+  <p>The findings are worth reading in full because they show the difference between a screen that looks finished
+  and a screen that means anything.</p>
+  <p><b>A 98 percent match score copied from Netflix.</b> Match to what? There is no recommendation engine here, so
+  the number is decoration wearing the costume of data.</p>
+  <p><b>A TV-MA rating and a Feature Film label</b> mimicking a streaming title. A content rating on a personal page
+  is borrowed rather than earned.</p>
+  <p><b>An empty editor placeholder reading "Add a description"</b> rendering on the live page a fan sees. An
+  unfinished state leaked to production.</p>
+  <p><b>Two competing primary buttons, Play and Watch Now.</b> Netflix has one. A visitor cannot tell what the
+  difference is, so the screen asks them to guess.</p>
+
+  <div class="callout">
+    <div class="t">The pattern underneath</div>
+    <p>Every one of these is the same mistake: copying the surface of a product that earned those elements, into a
+    product that has not. A match score means something at Netflix because a recommendation engine computes it. Here
+    it is a number with nothing behind it, and a visitor can feel that even if they cannot name it.</p>
+  </div>
+
+  <p>The section that already worked was Clips and Reels, so it became the model for the rest, which is the same
+  method the cross-screen audit used.</p>
+</section>
+
+<hr class="rule">
+
+<section>
+  <h2>Stage three: the fixes</h2>
+  <p>What follows is the third stage, screen by screen. The comparison below opens both builds side by side so the distance is visible before the individual changes.</p>
+</section>
+
+<section>
   <h2>How far back it goes</h2>
   <p>The frames below are not archive screenshots. Both were captured on the same machine on the same afternoon,
   by checking out the June build into a separate working copy, running it alongside the current branch, and
