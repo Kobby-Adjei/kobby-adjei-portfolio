@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ladder · Kobby Adjei</title>
+<meta name="description" content="How to rank a 4,000 film catalogue without comparing every pair: six reference films as a fixed ladder, then a real contest among the few that beat all of them.">
+<link rel="stylesheet" href="assets/site.2.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23F4F2E9' stroke='%2324251F' stroke-width='1.4'/><path d='M16 1A15 15 0 0 1 16 31A7.5 7.5 0 0 1 16 16A7.5 7.5 0 0 0 16 1Z' fill='%2324251F'/><circle cx='16' cy='8.5' r='3' fill='%2324251F'/><circle cx='16' cy='23.5' r='3' fill='%23F4F2E9'/></svg>">
+<style>
+  .reel{position:relative;width:100%;aspect-ratio:16/10.4;margin:8px 0 0;border-radius:12px;overflow:hidden;
+    background:#050506;border:1px solid var(--rule)}
+  .reel iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .reel-note{font-size:13px;color:var(--muted);margin:10px 0 0}
+  .reel-note a{color:inherit}
+  .math{width:100%;border-collapse:collapse;margin:14px 0 0;font-variant-numeric:tabular-nums}
+  .math td{padding:10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  .math td:last-child{text-align:right;white-space:nowrap;padding-left:18px}
+  .math tr.total td{font-weight:600;border-bottom:0}
+  .math small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+  @media(max-width:600px){.reel{aspect-ratio:16/13}}
+</style>
+</head>
+<body>
+
+<nav class="mast"><div class="in">
+  <a class="me" href="./">Kobby Adjei</a>
+  <a href="renovation.html">The Renovation</a>
+  <a href="tournament.html">The Tournament</a>
+  <a class="here" href="the-ladder.html">The Ladder</a>
+  <a href="frame-budget.html">The Frame Budget</a>
+  <a class="src" href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Algorithm design · FlmLnk</div>
+  <h1>How do you rank 4,000 films without 16 million comparisons?</h1>
+  <p class="lede" style="margin-top:26px">FlmLnk's engine decides which old films in a catalogue deserve a marketing
+  test. It watches two trailers, picks the stronger film, and does that for every pair, shown both ways round so the
+  order it sees them in cannot sway it. A batch of 30 films takes 870 comparisons, about 48 minutes. Real catalogues
+  run into the thousands.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">15,996,000</div><div class="k">comparisons to rank 4,000 films pair by pair</div></div>
+    <div class="stat"><div class="n">617</div><div class="k">days of nonstop work at 18 a minute</div></div>
+    <div class="stat"><div class="n">65,022</div><div class="k">comparisons with the ladder</div></div>
+    <div class="stat"><div class="n">99.6%</div><div class="k">less work</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>The problem</h2>
+  <p>Comparing every pair grows with the square of the catalogue. Double the films and the work goes up four times.
+  At 4,000 films that is 15,996,000 comparisons. The engine runs at 18 model calls a minute, so ranking one catalogue
+  would take 617 days.</p>
+  <p>Splitting the catalogue into batches of 30 does not fix it. A film's score is the share of matchups it won
+  inside its own batch, so it only means something next to the films it met. 134 batches give you 134 separate
+  leaderboards. A weak film in a weak batch outscores a strong film in a strong one, and nothing tells you which is
+  which.</p>
+</section>
+
+<section>
+  <h2>The idea: a fixed ladder</h2>
+  <p>Put the same reference films into every batch. If every film in the catalogue is measured against the same
+  rungs, every score lands on one scale, and the batches join up into a single ranking. Standardised tests use the
+  same trick: they carry a set of anchor questions between exam versions so a score means the same thing from year
+  to year.</p>
+  <p>The catch is choosing the rungs. You want them spread from the best film to the worst, but on a catalogue you
+  have never seen you do not know where the best and worst are. So the ladder is built from the catalogue itself.</p>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <p><b>Rank a random 30.</b> Random because nothing is known yet, so a hand picked sample would only be a guess.
+  Every film plays every other, which gives a small, properly ordered ladder built from this customer's own films.</p>
+  <p><b>Keep six as reference films.</b> The best, the worst, and four spread evenly between. Deliberately not the top
+  six: if every reference were a hit, every film would lose to all of them and they would all score the same. Only
+  films the engine judges the same way on two separate runs get kept, because the six are reused thousands of times
+  and any wobble in them spreads into every score.</p>
+  <p><b>Screen everything against the six.</b> Each remaining film plays the same six matches and lands in a band. A
+  film that loses to any reference is not getting a marketing budget, so it is finished and costs nothing more.</p>
+  <p><b>Run a real contest among the survivors.</b> A film has to beat the best of 30 random films to get through,
+  which about 1 in 31 films will. At 4,000 films that is roughly 130, and those get a full round robin. That is the
+  part that needs to be precise, because that is where the money goes. It is the same shape search engines use: a
+  cheap pass over everything, then an expensive pass on the few candidates that matter.</p>
+  <table class="math" aria-label="Comparisons needed for a 4,000 film catalogue">
+    <tr><td>Rank the random 30<small>30 × 29</small></td><td>870</td></tr>
+    <tr><td>Screen 3,970 films against 6 references<small>3,970 × 6 × both orders</small></td><td>47,640</td></tr>
+    <tr><td>Final among about 130 survivors<small>129 × 128</small></td><td>16,512</td></tr>
+    <tr class="total"><td>Total, against 15,996,000 pair by pair</td><td>65,022</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>The explainer</h2>
+  <p>I made this to take the team through the method. It runs about a minute and a half, with speed and timeline
+  controls underneath.</p>
+  <figure class="reel" aria-label="Motion explainer of the ladder method">
+    <iframe src="assets/ranking-motion.html" title="The ladder method, explained" loading="lazy" allowfullscreen></iframe>
+  </figure>
+  <p class="reel-note"><a href="assets/ranking-motion.html" target="_blank" rel="noopener">Open it on its own page</a></p>
+</section>
+
+<section>
+  <h2>Where it stands</h2>
+  <p>This is a design with its arithmetic worked out, not a measured result. The engine in production still compares
+  every pair and takes 30 films a batch. The next step is building the reference set into the engine, then running it
+  against the full pair by pair ranking on the same films and comparing the shortlists, how stable they are across
+  runs, what fails, and what it costs.</p>
+  <p>Two things the method does not solve. At 18 calls a minute, 65,022 comparisons is still about two and a half
+  days, so the call rate is the next ceiling. And the final is sized by how many films a customer will actually fund,
+  which is a business decision, not something the algorithm can pick for them.</p>
+</section>
+
+<div class="callout">You do not need to put 4,000 films in order. You need to find the few worth money. Those are
+different problems, and the second one is far cheaper.</div>
+
+<div class="next">
+  <a href="tournament.html"><span>Previous</span>The Tournament</a>
+  <a href="frame-budget.html"><span>Next</span>The Frame Budget</a>
+</div>
+
+<footer>
+  <p style="margin:0">Kobby Adjei. AI Platform Development Intern at FlmLnk, Inc.
+  <a href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a> · <a href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source on GitHub</a></p>
+</footer>
+
+</div>
+</body>
+</html>
