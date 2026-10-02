@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Ladder · Kobby Adjei</title>
-<meta name="description" content="How to rank a 4,000 film catalogue without comparing every pair: six reference films as a fixed ladder, then a real contest among the few that beat all of them.">
+<meta name="description" content="Designing a cheaper way to rank a 4,000 film catalogue, testing it against the thorough ranking, and finding it misses four of the ten best films.">
 <link rel="stylesheet" href="assets/site.2.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23F4F2E9' stroke='%2324251F' stroke-width='1.4'/><path d='M16 1A15 15 0 0 1 16 31A7.5 7.5 0 0 1 16 16A7.5 7.5 0 0 0 16 1Z' fill='%2324251F'/><circle cx='16' cy='8.5' r='3' fill='%2324251F'/><circle cx='16' cy='23.5' r='3' fill='%23F4F2E9'/></svg>">
 <style>
@@ -40,16 +40,16 @@
   </figure>
   <p class="reel-note" style="margin:10px 0 34px">About a minute and a half, with speed and timeline controls underneath. <a href="assets/ranking-motion.html" target="_blank" rel="noopener">Open it on its own page</a></p>
   <div class="eyebrow">Algorithm design · FlmLnk</div>
-  <h1>How do you rank 4,000 films without 16 million comparisons?</h1>
+  <h1>The shortcut that saved 99.6% of the work, and lost 4 of the 10 best films</h1>
   <p class="lede" style="margin-top:26px">FlmLnk's engine decides which old films in a catalogue deserve a marketing
   test. It watches two trailers, picks the stronger film, and does that for every pair, shown both ways round so the
   order it sees them in cannot sway it. A batch of 30 films takes 870 comparisons, about 48 minutes. Real catalogues
   run into the thousands.</p>
   <div class="stat-row">
     <div class="stat"><div class="n">15,996,000</div><div class="k">comparisons to rank 4,000 films pair by pair</div></div>
-    <div class="stat"><div class="n">617</div><div class="k">days of nonstop work at 18 a minute</div></div>
-    <div class="stat"><div class="n">65,022</div><div class="k">comparisons with the ladder</div></div>
-    <div class="stat"><div class="n">99.6%</div><div class="k">less work</div></div>
+    <div class="stat"><div class="n">65,022</div><div class="k">comparisons the shortcut needs instead</div></div>
+    <div class="stat"><div class="n">6/10</div><div class="k">of the best films it actually found</div></div>
+    <div class="stat"><div class="n">3</div><div class="k">versions tested, all the same score</div></div>
   </div>
 </header>
 
@@ -97,18 +97,59 @@
 </section>
 
 <section>
-  <h2>Where it stands</h2>
-  <p>This is a design with its arithmetic worked out, not a measured result. The engine in production still compares
-  every pair and takes 30 films a batch. The next step is building the reference set into the engine, then running it
-  against the full pair by pair ranking on the same films and comparing the shortlists, how stable they are across
-  runs, what fails, and what it costs.</p>
-  <p>Two things the method does not solve. At 18 calls a minute, 65,022 comparisons is still about two and a half
-  days, so the call rate is the next ceiling. And the final is sized by how many films a customer will actually fund,
-  which is a business decision, not something the algorithm can pick for them.</p>
+  <h2>So I tested it</h2>
+  <p>The arithmetic was never in doubt. The question was whether a film's record against six fixed opponents says
+  the same thing as its record against the whole field. We already had the answer to check against: 62 films, each
+  compared with about fourteen others, run twice.</p>
+  <p>So I pretended to know nothing about those films, froze six as a ladder, screened the other 55 against only
+  those six, and compared the result with the thorough ranking.</p>
+  <table class="math" aria-label="Results of three reference ladders">
+    <tr><td><b>Six references, spread across the whole range</b><small>1.00, 0.81, 0.50, 0.25, 0.12, 0.00 win rate</small></td><td>6 of the top 10</td></tr>
+    <tr><td><b>Six references, clustered near the top</b><small>chosen by Bradley-Terry strength instead</small></td><td>6 of the top 10</td></tr>
+    <tr class="total"><td><b>Both combined, twelve references</b><small>double the evidence per film</small></td><td>6 of the top 10</td></tr>
+  </table>
+  <p>Six out of ten, three times over. Moving the references did not change it. Doubling them did not change it.
+  A method whose entire job is finding the best films was missing four of them.</p>
 </section>
 
-<div class="callout">You do not need to put 4,000 films in order. You need to find the few worth money. Those are
-different problems, and the second one is far cheaper.</div>
+<section>
+  <h2>Why it fails</h2>
+  <p>The first ladder failed in a way that named the cause. Here are three real records:</p>
+  <table class="math" aria-label="Three films and their records against the reference ladder">
+    <tr><td>Justice<small>ranked 24th in the thorough ranking</small></td><td>beat 5 of 6</td></tr>
+    <tr><td>Bedside<small>ranked 33rd</small></td><td>beat 5 of 6</td></tr>
+    <tr class="total"><td>Between Friends<small>ranked 1st</small></td><td>beat 4.5 of 6</td></tr>
+  </table>
+  <p>The best film in the catalogue scored below a film ranked 33rd. Four of the six references were so weak that
+  every film worth considering beat them, so those four rungs answered "yes" every time and carried no information.
+  Six rungs, two of them useful.</p>
+  <p>So I built the opposite ladder, six strong films, and it broke the same way in the other direction: nearly
+  everything lost to nearly every rung, and the films bunched at the bottom instead of the top. Then twelve
+  references, and the score did not move at all.</p>
+  <p>That last result is the real finding. Each comparison the model makes agrees with our reviewers about 80% of
+  the time, so every reading carries noise. Asking a film the same six questions twice over does not cancel that
+  noise out. The thorough ranking works because every film meets a <i>different</i> set of opponents, so the errors
+  land in different places instead of repeating.</p>
+</section>
+
+<section>
+  <h2>Where it stands</h2>
+  <p>The simple version is dead: screen a catalogue against a fixed ladder, take the top, ship it. What might
+  survive is the two-stage shape, a cheap pass that keeps a generous band followed by a real contest inside it. The
+  best ladder held all ten of the top films, but only inside 47% of the catalogue, and half of 4,000 films is still
+  far too many for the second stage to be worth running.</p>
+  <p>Two things I would keep in mind reading any of this. The ranking I measured against is our own thorough
+  ranking, not the truth, so what I know is that the two disagree on four films, not which one is wrong. And six of
+  ten is well above chance, which is about two, so the signal is real and merely insufficient.</p>
+  <p>Separately, the constraint that started all of this turned out to be imaginary. The engine throttled itself to
+  18 model calls a minute because of a note written against a model we no longer use. I ramped it against the live
+  configuration and it ran 240 a minute with no rate limiting at all, so the ceiling is at least thirteen times what
+  we were using. Time was never the real limit. Cost is: about $700 a catalogue with the shortcut, around $171,000
+  without it, which is why a cheaper method is still worth finding.</p>
+</section>
+
+<div class="callout">The arithmetic was the easy part. A method that saves 99.6% of the work and loses 4 of your
+10 best films has not saved you anything.</div>
 
 <div class="next">
   <a href="tournament.html"><span>Previous</span>The Tournament</a>
