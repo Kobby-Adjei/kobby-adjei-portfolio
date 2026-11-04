@@ -40,6 +40,8 @@ body{background:var(--paper);color:var(--ink);font:17px/1.65 var(--sans);
       backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
 .craft .mast{border-bottom-color:var(--rose)}
 .mast .in{max-width:1080px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:22px}
+/* On a phone the links are wider than the screen: the bar scrolls sideways within itself, and the page does not. */
+.mast .in{overflow-x:auto;scrollbar-width:none}.mast .in::-webkit-scrollbar{display:none}.mast a{white-space:nowrap;flex-shrink:0}
 .mast a{color:var(--muted);text-decoration:none;font-size:14.5px}
 .mast a:hover{color:var(--ink)}
 .mast .me{color:var(--ink);font-weight:600;margin-right:auto;font-size:15px;letter-spacing:-.01em}

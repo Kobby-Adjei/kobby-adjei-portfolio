@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Narrator · Kobby Adjei</title>
+<meta name="description" content="Making FlmLnk's investor film, and tuning its synthetic narrator against a real ad by measuring pace, pauses, phrasing, melody and emphasis.">
+<link rel="stylesheet" href="assets/site.2.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23F4F2E9' stroke='%2324251F' stroke-width='1.4'/><path d='M16 1A15 15 0 0 1 16 31A7.5 7.5 0 0 1 16 16A7.5 7.5 0 0 0 16 1Z' fill='%2324251F'/><circle cx='16' cy='8.5' r='3' fill='%2324251F'/><circle cx='16' cy='23.5' r='3' fill='%23F4F2E9'/></svg>">
+<style>
+  img{max-width:100%;height:auto}
+  .film{position:relative;width:100%;aspect-ratio:16/9;margin:0;border-radius:12px;overflow:hidden;
+    background:var(--sunk);border:1px dashed var(--rule);display:flex;align-items:center;justify-content:center}
+  .film p{margin:0;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .film-note{font-size:13px;color:var(--muted);margin:10px 0 34px}
+  .clips{display:grid;gap:14px;margin:22px 0 0}
+  .clip{border:1px solid var(--rule);border-radius:11px;background:var(--panel);padding:16px 18px}
+  .clip h3{font-size:16px;margin:0 0 4px}
+  .clip p{font-size:15px;margin:0 0 12px;color:var(--muted)}
+  .clip audio{display:block;width:100%;height:40px}
+  .clip .num{font-family:var(--mono);color:var(--evidence);font-weight:600;font-variant-numeric:tabular-nums}
+  .math{width:100%;border-collapse:collapse;margin:14px 0 0;font-variant-numeric:tabular-nums}
+  .math th{text-align:right}
+  .math th:first-child{text-align:left}
+  .math td{padding:10px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+  .math td:first-child{padding-left:0}
+  .math td:last-child{padding-right:0}
+  .math tr.total td{font-weight:600;border-bottom:0}
+  .math td.on{color:var(--evidence);font-weight:600}
+  .math small{display:block;color:var(--muted);font-size:13px;margin-top:2px;font-family:var(--sans);white-space:normal}
+  .measures{list-style:none;padding:0;margin:18px 0}
+  .measures li{padding:12px 0;border-top:1px solid var(--rule);color:var(--ink-2);font-size:16px}
+  .measures li:last-child{border-bottom:1px solid var(--rule)}
+  .measures b{color:var(--ink)}
+  .stat{flex-basis:200px}
+  .chart{margin:22px 0 0}
+  .chart a{display:block}
+  .chart img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--rule);box-shadow:var(--shadow)}
+  .rows{list-style:none;padding:0;margin:20px 0 0}
+  .rows li{padding:10px 0 10px 16px;border-left:2px solid var(--rule);margin:0 0 8px;color:var(--ink-2);font-size:16px}
+  .rows li:last-child{border-left-color:var(--evidence)}
+  .rows b{color:var(--ink)}
+  .small-note{font-size:13px;color:var(--muted);margin-top:6px}
+  .measures + h3{margin-top:30px}
+  .stat .n{font-size:24px}
+  @media(max-width:600px){.film{aspect-ratio:16/11}}
+</style>
+</head>
+<body>
+
+<nav class="mast"><div class="in">
+  <a class="me" href="./">Kobby Adjei</a>
+  <a href="renovation.html">The Renovation</a>
+  <a href="tournament.html">The Tournament</a>
+  <a href="the-ladder.html">The Ladder</a>
+  <a href="frame-budget.html">The Frame Budget</a>
+  <a href="tutor-test.html">The Tutor Test</a>
+  <a class="here" href="investor-film.html">The Narrator</a>
+  <a class="src" href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <figure class="film" aria-label="The finished investor film" style="padding:0;background:#111;overflow:hidden">
+    <video controls preload="metadata" playsinline poster="assets/investor-film/film-poster.jpg" style="display:block;width:100%;height:auto">
+      <source src="assets/investor-film/film.mp4" type="video/mp4">
+    </video>
+  </figure>
+  <p class="film-note">The finished film, 3 minutes 29 seconds. Narration by an AI voice, tuned with the method below.</p>
+  <div class="eyebrow">Marketing meets technology · FlmLnk</div>
+  <h1>Making a synthetic narrator sound like a real ad, by measuring it</h1>
+  <p class="lede" style="margin-top:26px">Our CMO asked me for a short film that explains FlmLnk to investors. The
+  AI voice I used sounded robotic, and it ran sentences together. I could hear that something was wrong, but I
+  could not fix what I could not measure.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">1.52 → 0.53</div><div class="k">distance from the reference ad. Lower is closer.</div></div>
+    <div class="stat"><div class="n">9.3 → 14.7</div><div class="k">semitones of pitch range. The ad has 14.5.</div></div>
+    <div class="stat"><div class="n">10% → 36%</div><div class="k">long breaks between ideas. The ad has 34%.</div></div>
+    <div class="stat"><div class="n">13 min → 18 s</div><div class="k">to render the film when nothing changed</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>Listen to the difference</h2>
+  <p>Three short clips from the film's narration, in the order they were made.</p>
+  <div class="clips">
+    <div class="clip">
+      <h3>Before: the old voice</h3>
+      <p>Flat. The pitch moves over about <span class="num">9</span> semitones, and it talks faster than the ad.</p>
+      <audio controls preload="none" src="assets/investor-film/before-first-voice.mp3"></audio>
+    </div>
+    <div class="clip">
+      <h3>The run-on take</h3>
+      <p>A new voice with a lively melody. But only <span class="num">10%</span> of its breaks are long, so the
+      ideas blur into each other.</p>
+      <audio controls preload="none" src="assets/investor-film/run-on-take.mp3"></audio>
+    </div>
+    <div class="clip">
+      <h3>The final take</h3>
+      <p>Same voice, same settings. Each sentence was recorded on its own and the pauses were set by hand.</p>
+      <audio controls preload="none" src="assets/investor-film/final-read.mp3"></audio>
+    </div>
+  </div>
+  <p style="margin-top:22px">The reference was the 2012 Dollar Shave Club launch ad. I don't host its audio here.
+  You can hear it on the <a class="link" href="https://www.youtube.com/watch?v=ZUG9qYTJMsI" target="_blank" rel="noopener">official
+  upload</a>. It is a comedy ad, so we borrowed its rhythm, not its tone.</p>
+</section>
+
+<section>
+  <h2>How I measured it</h2>
+  <p>I built the film with Claude, an AI coding assistant. Claude cannot hear audio. So every voice choice rested
+  on my ears alone, and my ears could say "robotic" but not why. My idea was to measure a narration that sounds
+  natural and tune ours to match. Claude built the measuring tool. It scores five things:</p>
+  <ul class="measures">
+    <li><b>Pace.</b> How fast the words come.</li>
+    <li><b>Pauses.</b> How long the breaks are, and how many are long breaks between ideas.</li>
+    <li><b>Phrasing.</b> Words between breaths. Too many is a run-on. Too few is choppy.</li>
+    <li><b>Melody.</b> How far the pitch rises and falls. Flat sounds robotic.</li>
+    <li><b>Emphasis.</b> How much the loudness swings.</li>
+  </ul>
+  <p>It then gives one score for how far a take is from the ad. Numbers turned "sounds robotic" into something I
+  could fix and check. The picture below shows what the numbers saw.</p>
+</section>
+
+<section>
+  <h2>What the voice looks like</h2>
+  <p>Each row is the first 20 seconds of one read. Blue dots are the pitch going up and down. Grey bars show when
+  the voice is talking, so the gaps are pauses. A black triangle marks a long pause between ideas.</p>
+  <figure class="chart">
+    <a href="assets/investor-film/prosody.png" target="_blank" rel="noopener"><img src="assets/investor-film/prosody.png" alt="Pitch chart of four reads, 20 seconds each. The reference ad swings widely and has five long pauses. The old voice stays in a narrow band. The run-on take swings widely but has one long pause. The final take swings widely and has three long pauses, like the ad." width="1100" height="1364" loading="lazy"></a>
+  </figure>
+  <ul class="rows">
+    <li><b>The reference ad.</b> The target. Wide swings in pitch, and clear pauses where ideas change.</li>
+    <li><b>Old voice.</b> Flat and rushed. The pitch stays in a narrow band, and it talks faster than the ad.</li>
+    <li><b>Run-on take.</b> Lively, but only one long pause in 20 seconds. The ideas run together.</li>
+    <li><b>Final take.</b> Moves like a real ad. The same wide swings, and long pauses where the ideas change.</li>
+  </ul>
+  <p class="small-note">Tap the chart to open it full size.</p>
+</section>
+
+<section>
+  <h2>Turning points</h2>
+  <ol class="timeline">
+    <li><b>The music was sad.</b> I said the piano bed was "lowkey a sad vibe". Instead of guessing again, Claude
+    made three short previews in different styles. I picked indie electronic.</li>
+    <li><b>"Doesn't sound like a real campaign."</b> The narrator read the script like a script. Claude rewrote
+    every line to sound spoken, and I picked the take that worked.</li>
+    <li><b>The render cache.</b> Every small change redrew about 8,000 frames. I asked Claude to cache what it
+    could. It stored each scene under a fingerprint, and a test caught a bug where one edit redrew every scene.</li>
+    <li><b>The script rules.</b> While rewriting the film for investors, I kept making the same corrections. Claude
+    turned them into eight saved rules. Two of them: define every term, and every number needs a because.</li>
+    <li><b>Measure a real ad.</b> My idea, because Claude cannot hear. Claude suggested three references. I chose
+    the Dollar Shave Club ad.</li>
+    <li><b>The flat pitch.</b> The numbers explained what I had been hearing. The old voice moved over about 9
+    semitones, against 14.5 in the ad.</li>
+    <li><b>The run-on.</b> A new long take scored well overall. I said it still sounded like a run-on. The numbers
+    had already shown it: 10% long breaks against the ad's 34%. The good melody hid it in the average. Claude said
+    it had missed this.</li>
+    <li><b>The fix.</b> Record each sentence on its own. Bring every line to the same loudness. Join them with
+    gaps we set: 0.75 to 0.85 seconds between ideas, 0.35 to 0.4 inside one. Then each measure has to pass on its
+    own, and speech-to-text checks every word.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Before and after</h2>
+  <div class="scroll">
+  <table class="math" aria-label="Narration measures for the ad and three takes">
+    <thead><tr><th>Measure</th><th>The ad</th><th>Old voice</th><th>Run-on take</th><th>Final take</th></tr></thead>
+    <tbody>
+    <tr><td>Pace<small>words per second</small></td><td>3.94</td><td>4.44</td><td>3.76</td><td class="on">3.66</td></tr>
+    <tr><td>Typical pause<small>seconds</small></td><td>0.42</td><td>0.63</td><td>0.37</td><td class="on">0.40</td></tr>
+    <tr><td>Long breaks<small>share of pauses over 0.6&nbsp;s</small></td><td>34%</td><td>50%</td><td>10%</td><td class="on">36%</td></tr>
+    <tr><td>Melody<small>semitones</small></td><td>14.48</td><td>9.28</td><td>14.46</td><td class="on">14.68</td></tr>
+    <tr class="total"><td>Distance from the ad<small>lower is closer</small></td><td>0</td><td>1.52</td><td>0.86</td><td class="on">0.53</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin-top:16px;font-size:14.5px;color:var(--muted)">All four were measured with the same, final
+  version of the tool. My process notes quote 2.06 for the old voice. That was before we fixed the emphasis
+  meter, so I measured it again.</p>
+</section>
+
+<section>
+  <h2>The nerdy part</h2>
+  <p>For anyone who wants the details. The measuring tool is a short Python script.</p>
+  <ul class="measures">
+    <li><b>Word timings.</b> faster-whisper, a speech-to-text model, gives the start and end of every word. A gap of
+    0.15 seconds or more counts as a pause. Using word times means background music cannot fake a pause.</li>
+    <li><b>Pace.</b> Words divided by talking time.</li>
+    <li><b>Pauses.</b> The typical pause is the median. Long breaks are the share of pauses over 0.6&nbsp;seconds. This
+    is the run-on test.</li>
+    <li><b>Phrasing.</b> Words divided by the number of phrases, which is pauses plus one.</li>
+    <li><b>Melody.</b> Praat, a speech analysis tool, tracks the pitch every 10 ms, only inside words. Each value
+    becomes semitones from the speaker's middle pitch. The range is the 90th percentile minus the 10th, so a few
+    stray points do not count.</li>
+    <li><b>Emphasis.</b> How much the loudness inside words varies, in decibels. Near-silent frames are ignored.</li>
+    <li><b>Distance.</b> Each measure's gap from the ad is divided by what we count as one typical miss, for
+    example 2 semitones of melody or 0.4 words a second of pace. Then each gap is squared, the squares are averaged,
+    and the distance is the square root of that. 0 means identical. The ad is measured over its first 75 seconds, the part with talking.</li>
+  </ul>
+  <h3>The fixes</h3>
+  <ul class="measures">
+    <li><b>Line by line.</b> Each sentence is recorded as its own file, with the same voice and settings. Act 1 was
+    12 recordings. The model never sees the next line, so it cannot run into it.</li>
+    <li><b>Same loudness per line.</b> Each line gets one fixed volume change. A dynamic normaliser would pump up
+    the breaths and gaps.</li>
+    <li><b>Trim and speed.</b> Each line is sped up 12% with the pitch kept, and its own silence is cut from both
+    ends.</li>
+    <li><b>Set pauses.</b> 0.75 to 0.85 seconds between ideas. 0.35 to 0.4 seconds inside one.</li>
+    <li><b>Room tone.</b> The gaps hold faint noise, not digital silence. Real recordings always have some, and
+    dead silence also threw off the emphasis number.</li>
+    <li><b>Pass marks.</b> Each measure has to pass on its own, not just the overall score. Speech-to-text then
+    checks every word.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What I'd do next</h2>
+  <p><b>Use a range, not one ad.</b> One comedy ad is not a standard. I would measure 3 to 5 natural ads and aim
+  for a range, for example a typical pause between 0.35 and 0.5 seconds.</p>
+  <p><b>Treat the score as home-made.</b> The scale for each measure is our own choice. It also misses breaths,
+  small timing wobbles, and a voice warming up across a sentence. Someone could still call this voice robotic.</p>
+  <p><b>Confirm before investors see it.</b> Some claims in the film come from partners and still need
+  confirming. The film has not been tested on investors yet.</p>
+</section>
+
+<div class="callout">An average can hide the failure. The run-on take matched the ad's melody almost exactly, so
+its overall score looked fine. Checking each measure on its own is what caught it.</div>
+
+<p style="margin-top:26px"><a class="link" href="investor-film-notes.html">Full process notes</a></p>
+
+<div class="next">
+  <a href="tutor-test.html"><span>Previous</span>The Tutor Test</a>
+  <a href="./"><span>Back to</span>All the work</a>
+</div>
+
+<footer>
+  <p style="margin:0">Kobby Adjei. AI Platform Development Intern at FlmLnk, Inc.
+  <a href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a> · <a href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source on GitHub</a></p>
+</footer>
+
+</div>
+</body>
+</html>

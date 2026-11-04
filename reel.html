@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kobby Adjei — the reel</title>
+<meta name="description" content="Four pieces of work, narrated one beat at a time.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>◐</text></svg>">
+<style>
+/* Palette lifted verbatim from assets/site.2.css so this reads as the same
+   site in a different mood, not a different site. */
+:root{
+  --paper:#F5F4F0; --panel:#FFFFFF; --sunk:#EDEBE5;
+  --ink:#141317; --ink-2:#3C3A42; --muted:#6A6862; --rule:#DFDCD4;
+  --rose:#9E5566; --evidence:#1F5FD0;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --accent:var(--evidence);
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#111014;--panel:#191820;--sunk:#15141A;--ink:#EDEBE4;--ink-2:#C6C2BA;
+        --muted:#96938B;--rule:#2A2833;--rose:#DFA3B2;--evidence:#7BA5F5}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:17px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+
+/* ── the spine ──
+   A film strip, not a progress bar. It says how many acts there are and which
+   one you are in — the two things a reader of a sequence wants to know and a
+   scrolling page normally refuses to tell them. */
+.spine{position:fixed;left:28px;top:50%;transform:translateY(-50%);z-index:60;
+  display:flex;flex-direction:column;gap:14px}
+.spine b{display:block;width:2px;height:26px;background:var(--rule);border:0;padding:0;
+  transition:background-color .4s ease,height .4s ease}
+.spine b.on{background:var(--accent);height:44px}
+.spine i{font:600 10px/1 var(--mono);letter-spacing:.14em;color:var(--muted);
+  font-style:normal;writing-mode:vertical-rl;margin-bottom:6px}
+
+/* ── a scene ──
+   Each act is one sticky frame. The page scrolls; the frame does not. That is
+   the whole illusion: it reads as cuts rather than as a document moving past,
+   and it costs no library and no scroll hijacking — the reader keeps their
+   scrollbar, their trackpad and their keyboard. */
+.act{position:relative;height:200vh}
+.stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;
+  padding:0 clamp(28px,7vw,90px);
+  /* Driven from scroll, so an act dissolves out before the next arrives. */
+  opacity:1;transition:opacity .3s linear}
+.frame{max-width:min(1000px,90vw);margin:0 auto;width:100%}
+
+.slate{font:600 11.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:26px;display:flex;gap:14px;align-items:center}
+.slate s{width:34px;height:1px;background:var(--rule);text-decoration:none}
+
+/* Beats stack in the same place and cross-fade. Only one is lit; the others
+   stay faintly present so the reader feels the sequence rather than a slideshow
+   that discards what came before. */
+.beats{position:relative;min-height:46vh}
+.beat{position:absolute;inset:0;opacity:0;transform:translateY(14px);
+  transition:opacity .55s ease,transform .55s ease,filter .55s ease;
+  filter:blur(3px);pointer-events:none}
+.beat.on{opacity:1;transform:none;filter:none;pointer-events:auto}
+.beat.was{opacity:0;transform:translateY(-10px)}
+
+.beat h2{font-family:var(--serif);font-weight:400;margin:0 0 26px;
+  font-size:clamp(30px,4.6vw,58px);line-height:1.08;letter-spacing:-.015em;max-width:21ch}
+.beat p{margin:0;color:var(--ink-2);max-width:56ch;font-size:clamp(16px,1.5vw,19.5px)}
+.beat .fig{font-family:var(--mono);color:var(--accent);font-weight:600;
+  font-variant-numeric:tabular-nums}
+
+.count{display:flex;gap:clamp(28px,6vw,80px);flex-wrap:nowrap;margin-top:10px}
+.count div{min-width:0}
+.count .n{font:600 clamp(34px,4.6vw,58px)/1 var(--mono);color:var(--accent);
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.count .k{font-size:13px;color:var(--muted);margin-top:8px;max-width:17ch;line-height:1.35}
+
+.act.craft{--accent:var(--rose)}
+
+/* Open and close are ordinary documents — a title card and the credits. */
+.card{min-height:100vh;display:flex;align-items:center;padding:0 clamp(28px,9vw,140px)}
+.card .frame{max-width:820px}
+.card h1{font-family:var(--serif);font-weight:400;margin:0 0 28px;
+  font-size:clamp(38px,7vw,74px);line-height:1.02;letter-spacing:-.02em}
+.card p{color:var(--ink-2);max-width:60ch;font-size:clamp(17px,1.6vw,20.5px)}
+.card .sig{font:12.5px/1 var(--mono);color:var(--muted);letter-spacing:.08em;margin-bottom:28px}
+blockquote{margin:34px 0 0;padding-left:22px;border-left:2px solid var(--accent);
+  font-family:var(--serif);font-size:clamp(19px,2.2vw,25px);line-height:1.4;color:var(--ink)}
+blockquote cite{display:block;margin-top:14px;font:11.5px/1.5 var(--mono);
+  font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.go{display:inline-block;margin-top:30px;font:13px/1 var(--mono);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none;
+  border-bottom:1.5px solid var(--accent);padding-bottom:5px}
+.go:hover{color:var(--accent)}
+.scroll{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);
+  font:11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  transition:opacity .4s ease}
+.scroll.gone{opacity:0}
+
+@media (max-width:760px){
+  .spine{display:none}
+  .act{height:220vh}
+  .beats{min-height:56vh}
+}
+
+/* Reduced motion gets the same story as a plain document: every beat visible,
+   nothing sticky, nothing fading. The narration is the content, not the
+   transitions — so taking the transitions away must not take the work away. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .act{height:auto}
+  .stage{position:static;height:auto;padding-top:12vh;padding-bottom:12vh}
+  .beats{min-height:0}
+  .beat{position:static;opacity:1;transform:none;filter:none;margin-bottom:44px;
+    transition:none;pointer-events:auto}
+  .beat.was{opacity:1;transform:none;filter:none}
+  .spine,.scroll{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="spine" aria-hidden="true">
+  <i>ACTS</i>
+  <b data-act="0"></b><b data-act="1"></b><b data-act="2"></b><b data-act="3"></b>
+</nav>
+
+<!-- Title card. The concrete judgement first, the method after it — the same
+     order the cases themselves use, and the reverse of the current site. -->
+<section class="card">
+  <div class="frame">
+    <div class="sig">Kobby Adjei · Design &amp; AI engineering</div>
+    <h1>Four times I wrote down what &ldquo;good&rdquo; means, then held something to it.</h1>
+    <blockquote>
+      A clip may end with narrative curiosity, but its language should feel complete.
+      Suspense feels intentional. Grammatical truncation feels broken.
+      <cite>The line from a rubric that decided most of a tournament</cite>
+    </blockquote>
+    <p style="margin-top:30px">That sentence started as &ldquo;this one just feels off.&rdquo; Every piece below is the
+    same move: take a judgement nobody can argue with or check, and state it precisely enough that
+    someone else can apply it, disagree with it, or prove it wrong.</p>
+  </div>
+</section>
+
+<section class="act craft" data-act="0">
+  <div class="stage"><div class="frame">
+    <div class="slate"><s></s>Act one · Product design · FlmLnk</div>
+    <div class="beats">
+      <div class="beat" data-beat="0">
+        <h2>It looked like every other AI app released that year.</h2>
+        <p>Nobody could say <em>why</em> it felt cheap — so nobody could say what would fix it.</p>
+      </div>
+      <div class="beat" data-beat="1">
+        <h2>I wrote the standard down, then logged every change against it.</h2>
+        <div class="count">
+          <div><div class="n" data-to="21">0</div><div class="k">changes shipped</div></div>
+          <div><div class="n" data-to="5">0</div><div class="k">stated principles</div></div>
+          <div><div class="n" data-to="7">0</div><div class="k">shown before / after</div></div>
+        </div>
+        <a class="go" href="renovation.html">Read the case →</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="act" data-act="1">
+  <div class="stage"><div class="frame">
+    <div class="slate"><s></s>Act two · AI evaluation · FlmLnk</div>
+    <div class="beats">
+      <div class="beat" data-beat="0">
+        <h2>The model choosing our clips was the most expensive thing we ran.</h2>
+        <p>Could a cheaper one do the same job? I already had a favourite, which was the problem.</p>
+      </div>
+      <div class="beat" data-beat="1">
+        <h2>So every clip was scored blind, and a fault in a tenth of a second decided it.</h2>
+        <div class="count">
+          <div><div class="n" data-to="23">0</div><div class="k">models tested</div></div>
+          <div><div class="n" data-to="297">0</div><div class="k">clips judged blind</div></div>
+          <div><div class="n" data-to="~78%">0</div><div class="k">lower cost</div></div>
+        </div>
+        <a class="go" href="tournament.html">Read the case →</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="act" data-act="2">
+  <div class="stage"><div class="frame">
+    <div class="slate"><s></s>Act three · AI research · FlmLnk</div>
+    <div class="beats">
+      <div class="beat" data-beat="0">
+        <h2>Every frame the model reads costs money.</h2>
+        <p>So how many does it actually need to judge a film? Nobody had asked.</p>
+      </div>
+      <div class="beat" data-beat="1">
+        <h2>Four. And the footage was not what carried the judgement.</h2>
+        <div class="count">
+          <div><div class="n" data-to="4">0</div><div class="k">frames is the knee</div></div>
+          <div><div class="n" data-to="12,600">0</div><div class="k">blind comparisons</div></div>
+          <div><div class="n" data-to="~55%">0</div><div class="k">honest ceiling</div></div>
+        </div>
+        <a class="go" href="frame-budget.html">Read the case →</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<section class="act" data-act="3">
+  <div class="stage"><div class="frame">
+    <div class="slate"><s></s>Act four · Learning systems · Guru, my own</div>
+    <div class="beats">
+      <div class="beat" data-beat="0">
+        <h2>A wrong answer key does not fail loudly.</h2>
+        <p>It tells a learner their correct solution is wrong — and reading the problems will never catch it.</p>
+      </div>
+      <div class="beat" data-beat="1">
+        <h2>So nothing ships unless its own answer passes its own tests.</h2>
+        <div class="count">
+          <div><div class="n" data-to="196">0</div><div class="k">drills, all verified</div></div>
+          <div><div class="n" data-to="742">0</div><div class="k">test cases run</div></div>
+          <div><div class="n" data-to="0">0</div><div class="k">shipped failing</div></div>
+        </div>
+        <a class="go" href="guru.html">Read the case →</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- Credits -->
+<section class="card">
+  <div class="frame">
+    <h1>A design system, a benchmark, an ablation, and a test gate.</h1>
+    <p>They look like four disciplines. The method is one, applied four times: take the judgement —
+    <em>this feels cheap</em>, <em>this clip is good</em>, <em>this answer is right</em> — and state it
+    precisely enough that a machine or another person can check it.</p>
+    <p>Two things follow once the standard is written down. Quality holds steady while the
+    implementation changes underneath it, which is how inference cost fell by roughly three quarters
+    without the output getting worse. And a real regression can be told apart from a difference of
+    opinion.</p>
+    <p class="sig" style="margin-top:40px">Kobby Adjei ·
+      <a class="go" style="margin:0;border:0;text-transform:none;letter-spacing:0" href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a></p>
+  </div>
+</section>
+
+<div class="scroll" id="hint">Scroll</div>
+
+<script>
+(function () {
+  'use strict';
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var acts = [].slice.call(document.querySelectorAll('.act'));
+  var ticks = [].slice.call(document.querySelectorAll('.spine b'));
+  var hint = document.getElementById('hint');
+
+  if (reduced) { if (hint) hint.remove(); return; }
+
+  /* Which beat is lit comes from how far through its own act you are, not from
+     an observer per beat. One number, three thresholds — so the beats can never
+     disagree about which of them is current, which is what happens when each
+     one decides for itself near a boundary. */
+  function paint() {
+    var mid = innerHeight / 2;
+    var current = -1;
+
+    acts.forEach(function (act, ai) {
+      var r = act.getBoundingClientRect();
+      var beats = [].slice.call(act.querySelectorAll('.beat'));
+      var span = r.height - innerHeight;
+      var p = span > 0 ? Math.min(1, Math.max(0, -r.top / span)) : 0;
+
+      if (r.top <= mid && r.bottom > mid) current = ai;
+
+      // Held a touch past each third so a beat has time to be read rather than
+      // swapping the instant the scroll crosses a line.
+      /* Dissolve on the way out, measured from the act's own bottom edge rather
+         than from `p`. `p` saturates at 1 while the act still fills a whole
+         screen, so fading on it blanked the last screenful of every act — the
+         beat was lit and invisible. The bottom edge is the thing that actually
+         says "this act is leaving". */
+      var leaving = r.bottom / innerHeight;
+      act.querySelector('.stage').style.opacity = Math.min(1, Math.max(0, leaving)).toFixed(3);
+
+      var i = p < 0.45 ? 0 : 1;
+      beats.forEach(function (b, bi) {
+        b.classList.toggle('on', bi === i);
+        b.classList.toggle('was', bi < i);
+        if (bi === i) count(b);
+      });
+    });
+
+    ticks.forEach(function (t, i) { t.classList.toggle('on', i === current); });
+    if (hint) hint.classList.toggle('gone', scrollY > innerHeight * 0.6);
+  }
+
+  /* Numbers arrive by counting, once. The figures are the evidence, so they get
+     the one piece of motion on the page that carries meaning rather than
+     decorating it — and they never replay, because a number that animates every
+     time you scroll past reads as an ornament. */
+  function count(beat) {
+    var ns = beat.querySelectorAll('.n[data-to]');
+    for (var i = 0; i < ns.length; i++) {
+      var el = ns[i];
+      if (el.dataset.done) continue;
+      el.dataset.done = '1';
+      run(el, +el.dataset.to, el.dataset.prefix || '', el.dataset.suffix || '');
+    }
+  }
+  function run(el, to, pre, suf) {
+    if (to === 0) { el.textContent = pre + '0' + suf; return; }
+    var t0 = performance.now(), dur = 900;
+    (function step(now) {
+      var p = Math.min(1, (now - t0) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(to * eased).toLocaleString() + suf;
+      if (p < 1) requestAnimationFrame(step);
+    })(t0);
+  }
+
+  addEventListener('scroll', function () { requestAnimationFrame(paint); }, { passive: true });
+  addEventListener('resize', paint);
+  paint();
+})();
+</script>
+</body>
+</html>
