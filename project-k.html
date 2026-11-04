@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project K · Kobby Adjei</title>
+<meta name="description" content="I test AI models that watch and listen to video clips. When a model's answer leaves out a sound that was in the clip, I find out where the sound got lost.">
+<link rel="stylesheet" href="assets/site.2.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='15' fill='%23F4F2E9' stroke='%2324251F' stroke-width='1.4'/><path d='M16 1A15 15 0 0 1 16 31A7.5 7.5 0 0 1 16 16A7.5 7.5 0 0 0 16 1Z' fill='%2324251F'/><circle cx='16' cy='8.5' r='3' fill='%2324251F'/><circle cx='16' cy='23.5' r='3' fill='%23F4F2E9'/></svg>">
+<style>
+  .math{width:100%;border-collapse:collapse;margin:14px 0 0;font-variant-numeric:tabular-nums}
+  .math td{padding:10px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+  .math td:last-child{text-align:right;white-space:nowrap;padding-left:18px}
+  .math tr.total td{font-weight:600;border-bottom:0}
+  .math small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+</style>
+</head>
+<body>
+
+<nav class="mast"><div class="in">
+  <a class="me" href="./">Kobby Adjei</a>
+  <a href="renovation.html">The Renovation</a>
+  <a href="tournament.html">The Tournament</a>
+  <a href="the-ladder.html">The Ladder</a>
+  <a href="frame-budget.html">The Frame Budget</a>
+  <a class="here" href="project-k.html">Project K</a>
+  <a class="src" href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source</a>
+</div></nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">AI research</div>
+  <h1>Where Multimodal Models Lose Audio Information</h1>
+  <p class="lede" style="margin-top:26px">Project K is my research project. I test AI models that watch
+  video clips and listen to the sound in them. Sometimes a model hears a sound, but its answer leaves the
+  sound out. I find out where the sound got lost. First I test from outside, by asking questions. Then I
+  test four models that anyone can open and check. Last, I go inside one model and look at how it works,
+  step by step.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="n">5</div><div class="k">ways of asking the first model about the same clips. Its answers never named the sounds</div></div>
+    <div class="stat"><div class="n">4</div><div class="k">open models took the same tests. Each one lost the sound in a different place</div></div>
+    <div class="stat"><div class="n">37</div><div class="k">steps inside the one model I opened up. The sound was still there at every step</div></div>
+    <div class="stat"><div class="n">360/360</div><div class="k">test tones. The model's own scores sorted every one right. Its spoken answers got about half wrong</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>The question</h2>
+  <p>More and more, these models write reports that people act on. Think of a home robot that watches the
+  stove. Or a camera in the home of an older person who lives alone. Or a safety monitor that has to hear
+  an alarm. If the report leaves out a sound, the person reading it acts on the wrong picture of the
+  world.</p>
+  <p>So I do not just ask if a model fails. I ask where it fails. If we know the exact place the sound gets
+  lost, that is a place someone can fix.</p>
+  <p>Two rules for every test. I use the same files and the same questions, and I change only one thing at
+  a time. And I only claim what the test really showed, no more.</p>
+</section>
+
+<section>
+  <h2>First tests: asking from outside</h2>
+  <p>The first model is called Pegasus 1.6. I cannot open it. I can only send it clips and read its
+  answers. So I asked in five ways.</p>
+  <p>I sent the same clip with the sound on and with the sound off. The answers came back the same, word
+  for word. The sound made no change at all.</p>
+  <p>I took one still picture and put seven different soundtracks on it, all at the same loudness. The
+  model reported the spoken words every time. It never reported the beeps, the running water, the vacuum
+  cleaner, or the frying sound. Not once.</p>
+  <p>I put spoken words on top of a vacuum cleaner sound. The vacuum sound changed the report. The words
+  "the blue kettle" came back as "Canon". But the answer still said there was no other sound. So the
+  vacuum was strong enough to change the words, but the model never said it was there.</p>
+  <p>Here is the claim, only as big as the tests allow. On these clips, through this service, the model
+  only reports what the spoken words carry. Other sounds do not reach its answers. I cannot see inside
+  this model, so I do not claim it cannot hear. I only claim what its answers show.</p>
+</section>
+
+<section>
+  <h2>Four open models, four different places</h2>
+  <p>Next I ran the same tests on four models that anyone can open. Same clips. Same questions. Each clip
+  also had a silent twin, so I could check if the model was just saying yes to everything. Each model lost
+  the sound in a different place.</p>
+  <table class="math" aria-label="Four open models and where each one loses the sound">
+    <tr><td><b>MiniCPM-o 2.6</b><small>it wrote out the speech word for word. Then, asked if there was speech, it said no</small></td><td>the report</td></tr>
+    <tr><td><b>OLA-7B</b><small>on the muted clips it still said yes to the vacuum, the sizzle and the water. On a fully silent clip it described sounds that were not there</small></td><td>it adds sounds</td></tr>
+    <tr><td><b>Qwen2.5-Omni-7B</b><small>asked yes or no, it confirmed the beeps and the water. Asked to name the sounds, it said none</small></td><td>the name</td></tr>
+    <tr class="total"><td><b>Qwen2.5-Omni-3B</b><small>the cleanest of the four on sound alone. With one still picture added, its copy of the speech broke down to a few numbers</small></td><td>the picture</td></tr>
+  </table>
+  <p>One more thing all four showed. Three of them, from two different makers, said a vacuum cleaner was
+  a door opening and closing. There was no door in the clip.</p>
+</section>
+
+<section>
+  <h2>Going inside one model</h2>
+  <p>The last model, Qwen2.5-Omni-3B, is open. So I could stop asking it questions and start looking
+  inside. I used two tools. Small checker programs read the model's inner steps and tell me what
+  information is still there. And I did a kind of transplant: I took the inner state from one clip and
+  pasted it into the run of a second clip, then watched how the answer changed. Everything in this part is
+  about this one model only.</p>
+  <p><b>The sound is still there at every step.</b> The checkers found the sound, its pitch, and its
+  timing at every one of the model's inner steps, from the first to the last. Inside, this model does not
+  lose the sound at all.</p>
+  <p><b>But its yes is set in the wrong place.</b> I asked the model if a tone was high or low. It said yes
+  to almost every tone, high and low. It got about half wrong. That looks like it cannot tell high from
+  low. But when a model answers yes or no, it first makes a score, then turns the score into a word. Its
+  scores were right. High tones got high scores. Low tones got low scores. The problem was the cut-off
+  point where the score turns into the word yes. The cut-off was in the wrong place. When I moved the
+  cut-off to where its own scores pointed, all 360 test tones came out right.</p>
+  <p><b>A transplant changes the answer.</b> I pasted the inner state of a clip with one tone into a run of
+  a clip with a different tone. The answer moved to the first clip's tone. This worked fully up to about
+  step 20, worked about half at step 22, and did not work at all by step 24. The pasted state even carried
+  the exact pitch of the first tone, more detail than the answer itself used.</p>
+  <p><b>The answer reads the parts that come after the sound.</b> In the later steps, I held the parts
+  that come after the sound fixed to the second clip's own state, while the transplant ran. The
+  transplant's effect almost fully went away. So to reach the answer, what the sound holds has to be
+  copied into the parts that come after it.</p>
+  <p><b>Even the name moves with the transplant.</b> When the pasted clip had a high tone, the second clip
+  answered with the word "beep". That happened 24 times out of 24. Then I pasted a clip that matched on
+  both pitch and timing, so the paste changed neither fact. The name never moved. 0 times out of 24. So
+  the name moves because the pitch crossed, not just because I pasted something.</p>
+</section>
+
+<section>
+  <h2>Where it stands</h2>
+  <p>The inside tests on this one model are done, and the results are fixed in place. I wrote down each
+  result, how strong it is, and what it does not prove. I also wrote the tests down as a set of steps, so
+  the same tests can run on any model later. All the result files and test code are public in the
+  <a href="https://github.com/Kobby-Adjei/project-k" target="_blank" rel="noopener">Project K repository</a>.
+  Two reviewers checked the work again and again. They found real mistakes. I fixed them, and the fixes
+  are written in the record with dates. The outside tests, with the exact questions and files, are in the
+  <a href="https://gist.github.com/Kobby-Adjei/af49ec9ee67403e61971575e49cf123e" target="_blank" rel="noopener">reproducibility gist</a>,
+  so anyone can run them again.</p>
+  <p>What is left is written down too. The same inside tests still have to run on MiniCPM, under the same
+  steps, when I take them up. And the bigger study comes next: sounds in the home, and the machines that
+  will report on them. One set of tests is on hold for a simple reason. The yes and no test for Pegasus
+  has 14 of its 60 answers, and the rest are waiting on the service's limit.</p>
+</section>
+
+<div class="callout">The hearing was fine. Inside the one model I could open, the sound was there at every
+step. The problem was in the answer, and I found the place where it happens.</div>
+
+<div class="next">
+  <a href="the-ladder.html"><span>Previous</span>The Ladder</a>
+  <a href="renovation.html"><span>Next</span>The Renovation</a>
+</div>
+
+<footer>
+  <p style="margin:0">Kobby Adjei. AI Platform Development Intern at FlmLnk, Inc.
+  <a href="mailto:kadjei1@emich.edu">kadjei1@emich.edu</a> · <a href="https://github.com/Kobby-Adjei/kobby-adjei-portfolio" target="_blank" rel="noopener">Source on GitHub</a></p>
+</footer>
+
+</div>
+</body>
+</html>
